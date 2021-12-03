@@ -6,46 +6,52 @@
 #    By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 16:24:00 by oavelar           #+#    #+#              #
-#    Updated: 2021/12/02 18:29:32 by oavelar          ###   ########.fr        #
+#    Updated: 2021/12/03 21:58:02 by oavelar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_containers
+#SHELL 		= /bin/bash
+NAME 		= ft_containers
+RM			= rm -rf
 
 ifeq ($(shell uname), Linux)
  CC = g++
 else
  CC = clang++
 endif
-FLAGS = -Wall -Wextra -Werror -g3 -std=c++98 #-fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g3 -std=c++98 #-std=c++11 -fsanitize=address
 
-INC_DIR		= Container_Include
-TEST_DIR	= Container_Test
+INCS_DIR	= Container_Include
+MAIN_INC	= -I$(INCS_DIR)
+INCS		= $(shell find $(INCS_DIR) -type f -name "*.hpp")
 
-INC			= $(shell find $(INC_DIR) -type f -name "*.hpp")
-TEST		= $(shell find $(TEST_DIR) -type f -name "*.cpp")
+SRCS_DIR 	= Container_Test
+SRCS		= $(shell find $(SRCS_DIR) -type f -name "*.cpp")
 
-OBJ			= $(TEST:%.cpp=%.o)
+OBJS		= $(SRCS:%.cpp=%.o)
 
 OK			= [\033[32mOK\033[0m]
 RED			= \033[1;31m
 MAG			= \033[33;95m
 OFF			= \033[0m
 
-all: $(NAME)
+all			: $(NAME)
 
-$(NAME):
-	@$(CC) $(FLAGS) -I$(INC) -c $< -o $@
-	@echo "Compilation of $(MAG)$(NAME): $(OFF) $(OK)$(OFF)"
+%.o			: %.cpp $(INCS) Makefile
+			@$(CC) $(FLAGS) $(MAIN_INC) -c $< -o $@
 
-clean:
-	@rm -f $(OBJ)
-	@echo "$(RED)Objects deleted!$(OFF)"
+$(NAME)		: $(OBJS)
+			@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+			@echo "Compilation of $(MAG)$(NAME): $(OFF) $(OK)$(OFF)"
 
-fclean: 
-	@rm $(NAME) 
-	@echo "$(RED)All removed!$(OFF)"
+clean		:
+			@$(RM) $(OBJS)
+			@echo "$(RED)Objects deleted!$(OFF)"
 
-re: fclean all 
+fclean		: 
+			@$(RM) $(NAME)
+			@echo "$(RED)All removed!$(OFF)"
 
-.PHONY: all clean fclean re
+re			: fclean all
+
+.PHONY		: all clean fclean re
