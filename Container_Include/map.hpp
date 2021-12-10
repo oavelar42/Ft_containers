@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:29:36 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/06 17:16:19 by oavelar          ###   ########.fr       */
+/*   Updated: 2021/12/10 21:59:57 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <memory>
+# include <string.h>
 # include <new>
 # include <limits>
 # include <utility>
@@ -28,6 +29,35 @@
 
 namespace ft
 {
+    /*********************/
+    /*     Class pair    */
+    /*********************/
+    template<typename key, typename T>
+    struct _pair
+    {
+        typedef key first_type;
+        typedef T second_type;
+
+        first_type key_value;
+        second_type mapped_value;
+        
+        _pair* prev;
+        _pair* next;
+
+        _pair(first_type t1, second_type t2): key_value(t1), mapped_value(t2) {}
+        
+        _pair(first_type t1, second_type t2, _pair *prev_, _pair *next_): key_value(t1), mapped_value(t2), prev(prev_), next(next_) {}
+        
+        
+        void insert_before(_pair *node) {
+            if (this->prev) {
+                node->prev = this->prev;
+                this->prev->next = node;
+            }
+            node->next = this;
+            this->prev = node;
+        }
+};
      /*********************/
     /*     Class Map     */
     /*********************/
@@ -88,7 +118,7 @@ namespace ft
             key_compare                     _key_comp;
 
         public:
-            test_map();
+            
             /***************************************************************************/
             /*** constructors ------------------------------------------------------ ***/
             explicit Map(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) : _root(0), _current_size(0), _alloc(alloc), _key_comp(comp)
@@ -280,9 +310,106 @@ namespace ft
              /***************************************************************************/
             /*** Observers --------------------------------------------------------- ***/
 
+            key_compare key_comp() const
+            {
+                return (_key_comp);
+            }
+            value_compare value_comp() const
+            {
+                value_compare value_comp(_key_comp);
+                return (value_comp);
+            }
+
+            /***************************************************************************/
+            /*** Operations -------------------------------------------------------- ***/
+            iterator find (const key_type& k) {
+                iterator ite = this->end();
+                    for (iterator it = this->begin(); it != ite; it++)
+                    {
+                        if (it.base()->key_value == k)
+                            return iterator(it.base());
+                    }
+                return iterator(this->end());
+            }
+    
+            const_iterator find (const key_type& k) const {
+                iterator ite = this->end();
+                    for (iterator it = this->begin(); it != ite; it++)
+                    {
+                        if (it.base()->key_value == k)
+                            return const_iterator(it.base());
+                    }
+                return const_iterator(this->end());
+            }
+
+            size_type count (const key_type& k) const {
+                const_iterator ite = this->end();
+                    size_type sum = 0;
+                    for (const_iterator it = this->begin(); it != ite; it++)
+                    {
+                        if (it.base()->key_value == k)
+                            sum++;
+                    }
+                return sum;
+            }
+
+            iterator        lower_bound (const key_type& k)
+            {
+                iterator it = this->begin();
+                for (; it != this->end(); it++)
+                {
+                    if (!(_key_comp(it->first, k)))
+                        return (it);
+                }
+                return (it);
+            }
+            const_iterator  lower_bound (const key_type& k) const
+            {
+                const_iterator it = this->begin();
+                for (; it != this->end(); it++)
+                {
+                    if (!(_key_comp(it->first, k)))
+                        return (it);
+                }
+                return (it);
+            }
+            iterator upper_bound (const key_type& k)
+            {
+                iterator it = this->begin();
+                for (; it != this->end(); it++)
+                {
+                    if (_key_comp(k, it->first))
+                        return (it);
+                }
+                return (it);
+            }
+            
+            const_iterator upper_bound (const key_type& k) const
+            {
+                const_iterator it = this->begin();
+                for (; it != this->end(); it++)
+                {
+                    if (_key_comp(k, it->first))
+                        return (it);
+                }
+                return (it);
+            }
+
+            _pair<const_iterator,const_iterator> equal_range (const key_type& k) const {
+                return _pair<const_iterator, const_iterator>(lower_bound(k), upper_bound(k));
+            }
+            
+            _pair<iterator,iterator>             equal_range (const key_type& k) {
+                return _pair<iterator, iterator>(lower_bound(k), upper_bound(k));
+            }
+
+            /***************************************************************************/
+            /*** Allocator --------------------------------------------------------- ***/
+            allocator_type get_allocator() const { return (_alloc); }
+
     };
  
-
+    ft test_map();
 }
 
 #endif
