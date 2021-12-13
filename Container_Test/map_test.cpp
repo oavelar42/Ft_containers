@@ -6,13 +6,13 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/10 21:56:33 by oavelar          ###   ########.fr       */
+/*   Updated: 2021/12/13 22:14:51 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.hpp"
 
-all void test_map()
+void test_map()
 {
     std::cout << "| MAP TEST |\n\n";
 

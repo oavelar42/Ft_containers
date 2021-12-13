@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:29:36 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/10 21:59:57 by oavelar          ###   ########.fr       */
+/*   Updated: 2021/12/13 22:14:42 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,86 @@ namespace ft
             this->prev = node;
         }
 };
+
+        /********************/
+        /*     Iterator     */
+        /********************/
+
+            template <typename key, typename T>
+    class MapIterator
+    {
+    public:      
+        typedef T value_type;
+        typedef value_type& reference;
+        typedef const value_type& const_reference;
+        typedef value_type* pointer;
+        typedef const value_type* const_pointer;
+        typedef std::ptrdiff_t difference_type;
+    protected:
+        typedef MapIterator<key, T> _Self;
+        typedef _pair<key, T> pair;
+        pair* _p;
+    public:
+        MapIterator(): _p(nullptr) { }
+        MapIterator(pair* p): _p(p) { }
+        MapIterator(const MapIterator &x): _p(x._p) { }
+        virtual ~MapIterator() {};
+        MapIterator &operator=(const MapIterator &x) { this->_p = x._p; return *this; }
+
+        pair* base() const {
+            return _p;
+        }
+        
+        reference operator*() const { return _p->mapped_value; }
+        pointer operator->() const { return &_p->mapped_value; }
+        const_reference operator*() { return _p->mapped_value; }
+        const_pointer operator->() { return &_p->mapped_value; }
+        
+        _Self& operator++() {
+            _p = _p->next;
+            return *this;
+        }
+        
+        _Self operator++(int) { 
+            _Self tmp = *this;
+            _p = _p->next;
+            return tmp;
+        }
+        
+        _Self& operator--() {
+            _p = _p->prev;
+            return *this;
+        }
+        
+        _Self operator--(int) {
+            _Self tmp = *this;
+            _p = _p->prev;
+            return *this;
+        }
+
+        bool operator==(MapIterator const &other) const {
+            return (this->_p == other._p);
+        }
+        bool operator!=(MapIterator const &other) const {
+            return (this->_p != other._p);
+        }
+        bool operator<(MapIterator const &other) const {
+            return (this->_p < other._p);
+        }
+        bool operator<=(MapIterator const &other) const {
+            return (this->_p <= other._p);
+        }
+        bool operator>(MapIterator const &other) const {
+            return (this->_p > other._p);
+        }
+        bool operator>=(MapIterator const &other) const {
+            return (this->_p >= other._p);
+        }
+};
      /*********************/
     /*     Class Map     */
     /*********************/
-    template < class key, class T, class Compare = std::less<key>, class Alloc = std::allocator<std::pair<const key,T>>>
+    template < class key, class T, class Compare = std::less<key>, class Alloc = std::allocator<std::pair<const key,T> > >
     class Map
     {
         public :
@@ -409,7 +485,6 @@ namespace ft
 
     };
  
-    ft test_map();
 }
 
 #endif
