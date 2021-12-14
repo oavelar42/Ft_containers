@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/10 21:59:45 by oavelar          ###   ########.fr       */
+/*   Updated: 2021/12/14 22:48:34 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ int main(int ac, char **av)
 {
     if (ac == 2)
     {
+        ft::Map < char, int > map;
         if (strcmp(av[1], "map") == 0)
         {
-            test_map();
+            map.test_map();
         }
         else
             std::cout << "Error : <executable> <example>" << std::endl;
