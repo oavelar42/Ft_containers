@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main_tester.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/20 22:39:46 by oavelar          ###   ########.fr       */
+/*   Created: 2021/12/20 22:35:58 by oavelar           #+#    #+#             */
+/*   Updated: 2021/12/20 22:44:27 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main_tester.hpp"
+#ifndef TESTER_HPP
+# define TESTER_HPP
 
-int main()
-{
-	/*std::cout << "VECTOR" << std::endl;
-	while (std::cin.get() != '\n') {}
-	test_vector();
+#include <string>
+#include <iostream>
+#include <iomanip>
 
-    /*std::cout << "STACK" << std::endl;
-	while (std::cin.get() != '\n') {}
-	test_stack();*/
+#include "map.hpp"
+#include <map>
 
-    std::cout << "MAP" << std::endl;
-	while (std::cin.get() != '\n') {}
-	test_map();
+#define GREEN "\033[0;32m"
+#define RED "\033[0;31m"
+#define YELLOW "\033[0;33m"
+#define SET "\033[0m"
 
-    /*std::cout << "SET" << std::endl;
-	while (std::cin.get() != '\n') {}
-	test_set();*/
+void test_vector();
+void test_stack();
+void test_map();
+void test_set();
 
-	return 0;
-}
+
+#endif

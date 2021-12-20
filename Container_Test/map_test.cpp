@@ -6,108 +6,266 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/14 22:50:00 by oavelar          ###   ########.fr       */
+/*   Updated: 2021/12/20 22:44:34 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.hpp"
+#include "main_tester.hpp"
+
+void print_title(std::string title, std::string subtitle)
+{
+	std::cout << std::endl;
+  std::cout << YELLOW << title << ": " << SET << subtitle << "\n" << std::endl;
+}
+
+void print_map(ft::map<char, int> map, std::string name)
+{
+  std::cout << name << ":\n";
+  for (ft::map<char, int>::iterator it = map.begin(); it != map.end(); it++)
+      std::cout << (*it).first << " = " << (*it).second << ", ";
+    std::cout << std::endl;
+    std::cout << std::endl;
+}
+
+void print_map(std::map<char, int> map, std::string name)
+{
+  std::cout << name << ":\n";
+  for (std::map<char, int>::iterator it = map.begin(); it != map.end(); it++)
+    std::cout << (*it).first << " = " << (*it).second << ", ";
+  std::cout << std::endl;
+  std::cout << std::endl;
+}
+
+void print_size(ft::map<char, int> map, std::string name)
+{
+  std::cout << name << " size: " << map.size() << ", max_size: " << map.max_size() << std::endl;
+  std::cout << name << " empty() (1: true 0:false): " << map.empty() << std::endl;
+  std::cout << std::endl;
+}
+
+void print_size(std::map<char, int> map, std::string name)
+{
+  std::cout << name << " size: " << map.size() << ", max_size: " << map.max_size() << std::endl;
+  std::cout << name << " empty() (1: true 0:false): " << map.empty() << std::endl;
+  std::cout << std::endl;
+}
 
 void test_map()
 {
-    std::cout << "| MAP TEST |\n\n";
+  print_title("CONSTRUCTOR", "ft::map & std::map");
+  ft::map<char, int> ft_map;
+  std::map<char, int> std_map;
+  print_size(ft_map, "ft_map");
+  print_size(std_map, "std_map");
 
-    ft::Map<char,int> first;
+  char c = 'a';
+  for (int i = 1; i <= 13; i++, c++)
+  {
+    ft_map[c] = i;
+    std_map[c] = i;
+  }
+  print_map(ft_map, "ft_map");
+  print_map(std_map, "std_map");
+  print_size(ft_map, "ft_map");
+  print_size(std_map, "std_map");
 
-    first['a']=10;
-    first['b']=30;
-    first['c']=50;
-    first['f']=70;
+  print_title("RANGE", "ft::map & std::map");
+  ft::map<char, int> ft_map_range(ft_map.begin(), ft_map.end());
+  std::map<char, int> std_map_range(std_map.begin(), std_map.end());
+  print_size(ft_map_range, "ft_map_range");
+  print_size(std_map_range, "std_map_range");
+  print_map(ft_map_range, "ft_map_range");
+  print_map(std_map_range, "std_map_range");
 
-    ft::Map<char,int> second (first.begin(),first.end());
+  print_title("COPY CONSTRUCTOR (copy of range)", "ft::map & std::map");
+  ft::map<char, int> ft_map_copy(ft_map_range);
+  std::map<char, int> std_map_copy(std_map_range);
+  print_size(ft_map_copy, "ft_map_copy");
+  print_size(std_map_copy, "std_map_copy");
+  print_map(ft_map_copy, "ft_map_copy");
+  print_map(std_map_copy, "std_map_copy");
 
-    ft::Map<char,int> third (second);
-    
-    ft::Map<char,int> fourth = third;
 
-    std::cout << "first:\n";
-    for (ft::Map<char,int>::iterator it = first.begin(); it != first.end(); it++)
-        std::cout << it.base()->key_value << " " << it.base()->mapped_value << "\n";
+  print_title("ASSIGNATION OPERATOR", "ft::map & std::map");
+  ft::map<char, int> ft_map_assignation;
+  std::map<char, int> std_map_assignation;
+  ft_map_assignation = ft_map_copy;
+  std_map_assignation = std_map_copy;
+  print_size(ft_map_assignation, "ft_map_assignation");
+  print_size(std_map_assignation, "std_map_assignation");
+  print_map(ft_map_assignation, "ft_map_assignation");
+  print_map(std_map_assignation, "std_map_assignation");
 
-    std::cout << "\nsecond:\n";
-    for (ft::Map<char,int>::iterator it = second.begin(); it != second.end(); it++)
-        std::cout << it.base()->key_value << " " << it.base()->mapped_value << "\n";
 
-    std::cout << "\nthird:\n";
-    for (ft::Map<char,int>::iterator it = third.begin(); it != third.end(); it++)
-        std::cout << it.base()->key_value << " " << it.base()->mapped_value << "\n";
-    
-    std::cout << "\nfourth:\n";
-    for (ft::Map<char,int>::iterator it = fourth.begin(); it != fourth.end(); it++)
-        std::cout << it.base()->key_value << " " << it.base()->mapped_value << "\n";
+  print_title("ITERATORS TESTS");
+  std::cout << "ft_map (iterator): ";
+  for (ft::map<char, int>::iterator it = ft_map.begin(); it != ft_map.end(); it++)
+    std::cout << (*it).first << " = " << (*it).second << ", ";
+  std::cout << std::endl;
+  std::cout << "std_map (iterator): ";
+  for (std::map<char, int>::iterator it = std_map.begin(); it != std_map.end(); it++)
+    std::cout << (*it).first << " = " << (*it).second << ", ";
+  std::cout << "\n" << std::endl;
+  std::cout << "ft_map (const_iterator): ";
+  for (ft::map<char, int>::const_iterator it = ft_map.begin(); it != ft_map.end(); it++)
+    std::cout << (*it).first << " = " << (*it).second << ", ";
+  std::cout << std::endl;
+  std::cout << "std_map (const_iterator): ";
+  for (std::map<char, int>::const_iterator it = std_map.begin(); it != std_map.end(); it++)
+    std::cout << (*it).first << " = " << (*it).second << ", ";
+  std::cout << "\n" << std::endl;
+  std::cout << "ft_map (reverse_iterator): ";
+  for (ft::map<char, int>::reverse_iterator rit = ft_map.rbegin(); rit != ft_map.rend(); rit++)
+    std::cout << (*rit).first << " = " << (*rit).second << ", ";
+  std::cout << std::endl;
+  std::cout << "std_map (reverse_iterator): ";
+  for (std::map<char, int>::reverse_iterator rit = std_map.rbegin(); rit != std_map.rend(); rit++)
+    std::cout << (*rit).first << " = " << (*rit).second << ", ";
+  std::cout << "\n" << std::endl;
+  std::cout << "ft_map (const_reverse_iterator): ";
+  for (ft::map<char, int>::const_reverse_iterator rit = ft_map.rbegin(); rit != ft_map.rend(); rit++)
+    std::cout << (*rit).first << " = " << (*rit).second << ", ";
+  std::cout << std::endl;
+  std::cout << "std_map (const_reverse_iterator): ";
+  for (std::map<char, int>::const_reverse_iterator rit = std_map.rbegin(); rit != std_map.rend(); rit++)
+    std::cout << (*rit).first << " = " << (*rit).second << ", ";
+  std::cout << "\n" << std::endl;
 
-    std::cout << "\nsecond empty?: ";
-    if (second.empty() == false)
-        std::cout << "not empty\n";
-        
-    std::cout << "size of second: " << second.size() << '\n';
-    std::cout << "max_size: " << second.max_size() << "\n";
+  print_title("ACCESSOR AND MEMBER FUNCTIONS", "size, max_size, empty");
+  print_size(ft_map, "ft_map");
+  print_size(std_map, "std_map");
 
-    std::cout << "\nsecond['a'] is " << second['a'] << '\n';
-    std::cout << "second['a'] is " << second['c'] << '\n';
+  print_title("MAP INSERT(val)");
+  for (int i = 14; i <= 19; i++, c++)
+  {
+    ft_map.insert(ft::make_pair(c, i));
+    std_map.insert(std::make_pair(c, i));
+  }
+  print_map(ft_map, "ft_map");
+  print_map(std_map, "std_map");
+  print_size(ft_map, "ft_map");
+  print_size(std_map, "std_map");
 
-    second.insert(ft::_pair<const char, int>('e', 42));
-    std::cout << "\nsecond.insert(_pair<const char, int>('e', 42)):\n";
-    for (ft::Map<char,int>::iterator it = second.begin(); it != second.end(); it++)
-        std::cout << it.base()->key_value << " " << it.base()->mapped_value << "\n";
+  print_title("MAP INSERT(position, val)");
+  for (int i = 20; i <= 26; i++, c++)
+  {
+    ft_map.insert(ft::make_pair(c, i));
+    std_map.insert(std::make_pair(c, i));
+  }
+  print_map(ft_map, "ft_map");
+  print_map(std_map, "std_map");
+  print_size(ft_map, "ft_map");
+  print_size(std_map, "std_map");
 
-    second.insert(ft::_pair<const char, int>('e', 42));
-    std::cout << "\nsecond.insert(_pair<const char, int>('e', 42)):\n";
-    for (ft::Map<char,int>::iterator it = second.begin(); it != second.end(); it++)
-        std::cout << it.base()->key_value << " " << it.base()->mapped_value << "\n";
-            
-    second.erase('a');
-    std::cout << "\nsecond.erase('a'):\n";
-    for (ft::Map<char,int>::iterator it = second.begin(); it != second.end(); it++)
-        std::cout << it.base()->key_value << " " << it.base()->mapped_value << "\n";
+  print_title("MAP INSERT(first, last)", "map -> map_copy");
+  print_title("BEFORE INSERT");
+  print_map(ft_map_copy, "ft_map_copy");
+  print_map(std_map_copy, "std_map_copy");
 
-    third.swap(second);
-    std::cout << "\nthird.swap('second'):\n";
-    std::cout << "third: \n";
-    for (ft::Map<char,int>::iterator it = third.begin(); it != third.end(); it++)
-        std::cout << it.base()->key_value << " " << it.base()->mapped_value << "\n";
+  print_title("AFTER INSERT");
+  ft_map_copy.insert(ft_map.begin(), ft_map.end());
+  std_map_copy.insert(std_map.begin(), std_map.end());
+  print_map(ft_map_copy, "ft_map_copy");
+  print_map(std_map_copy, "std_map_copy");
+  print_size(ft_map_copy, "ft_map_copy");
+  print_size(std_map_copy, "std_map_copy");
 
-    ft::Map<char,int>::key_compare mycomp = third.key_comp();
-    ft::Map<char,int>::iterator it = third.begin();
-    ft::Map<char,int>::iterator it2 = third.begin();
-    it2++;
-    if (mycomp(it.base()->key_value, it2.base()->key_value) == true)
-        std::cout << "\nmy comp == less\n";
-    if (third.value_comp()(ft::_pair<const char, int>('c', 42), ft::_pair<const char, int>('d', 44)) == true)
-        std::cout << "value_comp == less\n";
+  print_title("MAP ERASE(position)", "erasing first half of map_copy");
+  ft::map<char, int>::iterator ft_it_half = ft_map_copy.find('n');
+  std::map<char, int>::iterator std_it_half = std_map_copy.find('n');
+  for (ft::map<char, int>::iterator it = ft_map_copy.begin(); it != ft_it_half; it++)
+    ft_map_copy.erase(it);
+  for (std::map<char, int>::iterator it = std_map_copy.begin(); it != std_it_half; it++)
+    std_map_copy.erase(it);
+  print_map(ft_map_copy, "ft_map_copy");
+  print_map(std_map_copy, "std_map_copy");
+  print_size(ft_map_copy, "ft_map_copy");
+  print_size(std_map_copy, "std_map_copy");
 
-    std::cout << "\nthird.find('b'): \n";
-    std::cout << "b => " << third.find('b').base()->mapped_value << '\n';
+  print_title("MAP ERASE(key)", "erasing another half of map_copy");
+  c = 'n';
+  for (int i = 0; i < 6; i++, c++)
+  {
+    ft_map_copy.erase(c);
+    std_map_copy.erase(c);
+  }
+  print_map(ft_map_copy, "ft_map_copy");
+  print_map(std_map_copy, "std_map_copy");
+  print_size(ft_map_copy, "ft_map_copy");
+  print_size(std_map_copy, "std_map_copy");
 
-    std::cout << "third.count('b'): \n";
-    std::cout << third.count('b') << "\n";
+  print_title("MAP ERASE(first, last)", "finishing the job map_copy");
+  ft_map_copy.erase(ft_map_copy.begin(), ft_map_copy.end());
+  std_map_copy.erase(std_map_copy.begin(), std_map_copy.end());
+  print_map(ft_map_copy, "ft_map_copy");
+  print_map(std_map_copy, "std_map_copy");
+  print_size(ft_map_copy, "ft_map_copy");
+  print_size(std_map_copy, "std_map_copy");
 
-    ft::Map<char,int>::iterator it3 = third.lower_bound('b');
-    std::cout << "\nthird.lower_bound ('b'):\n";
-    std::cout << it3.base()->key_value << " " << it3.base()->mapped_value << "\n";
-    
-    ft::Map<char,int>::iterator it4 = third.upper_bound('b');
-    std::cout << "third.upper_bound ('b'):\n";
-    std::cout << it4.base()->key_value << " " << it4.base()->mapped_value << "\n";
+  print_title("MAP SWAP() (MEMBER)", "swaping map_range and map_copy");
+  print_title("BEFORE SWAP");
+  print_map(ft_map_range, "ft_map_range");
+  print_map(ft_map_copy, "ft_map_copy");
+  ft_map_range.swap(ft_map_copy);
+  print_title("AFTER SWAP");
+  print_map(ft_map_range, "ft_map_range");
+  print_map(ft_map_copy, "ft_map_copy");
 
-    ft::_pair<ft::Map<char,int>::iterator,ft::Map<char,int>::iterator> ret = third.equal_range('c');
+  print_title("MAP CLEAR", "clearing map copy again");
+  print_title("BEFORE");
+  print_map(ft_map_copy, "ft_map_copy");
+  print_size(ft_map_copy, "ft_map_copy");
+  ft_map_copy.clear();
+  print_title("AFTER");
+  print_map(ft_map_copy, "ft_map_copy");
+  print_size(ft_map_copy, "ft_map_copy");
 
-    std::cout << "\n";
-    std::cout << "lower bound points to: ";
-    std::cout << ret.key_value.base()->key_value << " => " << ret.key_value.base()->mapped_value << '\n';
+  print_title("MAP FIND(key) const and non_const");
+  ft::map<char, int>::iterator find_a = ft_map.find('a');
+  ft::map<char, int>::const_iterator find_z = ft_map.find('z');
+  std::cout << "find('a'): " << (*find_a).first << " = " << (*find_a).second << '\n';
+  std::cout << "find('z'): " << (*find_z).first << " = " << (*find_z).second << '\n';
 
-    std::cout << "upper bound points to: ";
-    std::cout << ret.mapped_value.base()->key_value << " => " << ret.mapped_value.base()->mapped_value << '\n';
-    
+  print_title("MAP COUNT(key)");
+  std::cout << 'a';
+  if (ft_map.count('a') > 0)
+    std::cout << " is an element of ft_map.\n";
+  else
+    std::cout << " is not an element of ft_map.\n";
+  std::cout << '1';
+  if (ft_map.count('1') > 0)
+    std::cout << " is an element of ft_map.\n";
+  else
+    std::cout << " is not an element of ft_map.\n";
+
+  print_title("MAP LOWER_BOUND AND UPPER_BOUND", "using it to erase from b to g");
+  ft::map<char,int>::iterator itlow = ft_map.lower_bound('b');
+  ft::map<char,int>::iterator itup = ft_map.upper_bound('g');
+  ft_map.erase(itlow, itup);
+  print_map(ft_map, "ft_map");
+  print_size(ft_map, "ft_map");
+
+  print_title("MAP EQUAL_RANGE", "for h");
+  ft::pair<ft::map<char,int>::iterator,ft::map<char,int>::iterator> ret;
+  ret = ft_map.equal_range('h');
+  std::cout << "lower bound points to: ";
+  std::cout << ret.first->first << " => " << ret.first->second << '\n';
+  std::cout << "upper bound points to: ";
+  std::cout << ret.second->first << " => " << ret.second->second << '\n';
+
+  print_title("MAP KEY_COMP AND VALUE_COMP", "display everything lower than m");
+  ft::map<char,int>::key_compare mycomp = ft_map.key_comp();
+
+  char highest_key = 'm';
+  ft::pair<char,int> highest = *ft_map.find('m');
+
+  ft::map<char,int>::iterator it = ft_map.begin();
+  while (ft_map.value_comp()(*it, highest) \
+    && mycomp((*it).first, highest_key))
+  {
+    std::cout << it->first << " => " << it->second << '\n';
+    it++;
+  }
 }
 
 

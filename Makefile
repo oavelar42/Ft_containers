@@ -6,7 +6,7 @@
 #    By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 16:24:00 by oavelar           #+#    #+#              #
-#    Updated: 2021/12/03 21:58:02 by oavelar          ###   ########.fr        #
+#    Updated: 2021/12/20 21:38:59 by oavelar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ ifeq ($(shell uname), Linux)
 else
  CC = clang++
 endif
-FLAGS = -Wall -Wextra -Werror -g3 -std=c++98 #-std=c++11 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++11 #-std=c++98 -fsanitize=address
 
 INCS_DIR	= Container_Include
 MAIN_INC	= -I$(INCS_DIR)
@@ -37,8 +37,8 @@ OFF			= \033[0m
 
 all			: $(NAME)
 
-%.o			: %.cpp $(INCS) Makefile
-			@$(CC) $(FLAGS) $(MAIN_INC) -c $< -o $@
+%.o			: %.cpp $(INCS) 
+			@$(CC) $(FLAGS) $(MAIN_INC) -c $< -o $@ -MD -g
 
 $(NAME)		: $(OBJS)
 			@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
