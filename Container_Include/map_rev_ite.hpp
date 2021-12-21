@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:13:09 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/20 22:21:32 by oavelar          ###   ########.fr       */
+/*   Updated: 2021/12/21 22:11:03 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ namespace ft
         map_node            *left;
         map_node            *parent;
     };
-    namespace map
-    {
+    //namespace map
+    //{
         /**************************/
         /*                        */
         /*     Const_iterator     */
@@ -98,7 +98,7 @@ namespace ft
                     _current_node = parent_node;
                     return (*this);
                 }
-                const_iterator      operator++(int) //i++ возвращаем сам объект, так как локальный объект исчезнет после выхода из функции
+                const_iterator      operator++(int)
                 {
                     const_iterator tmp(*this);
                     operator++();
@@ -211,7 +211,7 @@ namespace ft
                     this->_current_node = parent_node;
                     return (*this);
                 }
-                iterator    operator++(int) //i++ возвращаем сам объект, так как локальный объект исчезнет после выхода из функции
+                iterator    operator++(int)
                 {
                     iterator tmp(*this);
                     operator++();
@@ -309,7 +309,7 @@ namespace ft
                     _current_node = parent_node;
                     return (*this);
                 }
-                const_reverse_iterator      operator++(int) //i++ возвращаем сам объект, так как локальный объект исчезнет после выхода из функции
+                const_reverse_iterator      operator++(int) 
                 {
                     const_reverse_iterator tmp(*this);
                     operator++();
@@ -422,7 +422,7 @@ namespace ft
                     this->_current_node = parent_node;
                     return (*this);
                 }
-                reverse_iterator      operator++(int) //i++ возвращаем сам объект, так как локальный объект исчезнет после выхода из функции
+                reverse_iterator      operator++(int) 
                 {
                     reverse_iterator tmp(*this);
                     operator++();
@@ -454,121 +454,7 @@ namespace ft
                     return (tmp);
                 }
         };
-    }
+    //}
 }
 
 #endif
-
-
-
-
-/*
-
-   /*********************/
-    /*     Class pair    */
-    /********************
-    template<typename key, typename T>
-    struct _pair
-    {
-        typedef key first_type;
-        typedef T second_type;
-
-        first_type key_value;
-        second_type mapped_value;
-        
-        _pair* prev;
-        _pair* next;
-
-        _pair(first_type t1, second_type t2): key_value(t1), mapped_value(t2) {}
-        
-        _pair(first_type t1, second_type t2, _pair *prev_, _pair *next_): key_value(t1), mapped_value(t2), prev(prev_), next(next_) {}
-        
-        
-        void insert_before(_pair *node) {
-            if (this->prev) {
-                node->prev = this->prev;
-                this->prev->next = node;
-            }
-            node->next = this;
-            this->prev = node;
-        }
-};
-
-        /********************/
-        /*     Iterator     */
-        /*******************
-
-            template <typename key, typename T>
-    class MapIterator
-    {
-    public:      
-        typedef T value_type;
-        typedef value_type& reference;
-        typedef const value_type& const_reference;
-        typedef value_type* pointer;
-        typedef const value_type* const_pointer;
-        typedef std::ptrdiff_t difference_type;
-    protected:
-        typedef MapIterator<key, T> _Self;
-        typedef _pair<key, T> pair;
-        pair* _p;
-    public:
-        MapIterator(): _p(nullptr) { }
-        MapIterator(pair* p): _p(p) { }
-        MapIterator(const MapIterator &x): _p(x._p) { }
-        virtual ~MapIterator() {};
-        MapIterator &operator=(const MapIterator &x) { this->_p = x._p; return *this; }
-
-        pair* base() const {
-            return _p;
-        }
-        
-        reference operator*() const { return _p->mapped_value; }
-        pointer operator->() const { return &_p->mapped_value; }
-        const_reference operator*() { return _p->mapped_value; }
-        const_pointer operator->() { return &_p->mapped_value; }
-        
-        _Self& operator++() {
-            _p = _p->next;
-            return *this;
-        }
-        
-        _Self operator++(int) { 
-            _Self tmp = *this;
-            _p = _p->next;
-            return tmp;
-        }
-        
-        _Self& operator--() {
-            _p = _p->prev;
-            return *this;
-        }
-        
-        _Self operator--(int) {
-            _Self tmp = *this;
-            _p = _p->prev;
-            return *this;
-        }
-
-        bool operator==(MapIterator const &other) const {
-            return (this->_p == other._p);
-        }
-        bool operator!=(MapIterator const &other) const {
-            return (this->_p != other._p);
-        }
-        bool operator<(MapIterator const &other) const {
-            return (this->_p < other._p);
-        }
-        bool operator<=(MapIterator const &other) const {
-            return (this->_p <= other._p);
-        }
-        bool operator>(MapIterator const &other) const {
-            return (this->_p > other._p);
-        }
-        bool operator>=(MapIterator const &other) const {
-            return (this->_p >= other._p);
-        }
-};
-
-
-*/

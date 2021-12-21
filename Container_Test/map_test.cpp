@@ -6,17 +6,11 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/20 22:44:34 by oavelar          ###   ########.fr       */
+/*   Updated: 2021/12/21 22:02:45 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_tester.hpp"
-
-void print_title(std::string title, std::string subtitle)
-{
-	std::cout << std::endl;
-  std::cout << YELLOW << title << ": " << SET << subtitle << "\n" << std::endl;
-}
 
 void print_map(ft::map<char, int> map, std::string name)
 {

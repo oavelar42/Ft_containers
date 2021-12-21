@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:29:36 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/20 22:33:37 by oavelar          ###   ########.fr       */
+/*   Updated: 2021/12/21 22:16:10 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "map_rev_ite.hpp"
 
 # define OTA "\x1B[36m"
-# define RED "\x1B[31m"
+//# define RED "\x1B[31m"
 # define OFF "\033[0m"
 # define GRE "\x1B[32m"
 
@@ -106,13 +106,7 @@ namespace ft
             /***************************************************************************/
             /*** destructor -------------------------------------------------------- ***/
              
-           ~Map()
-            {
-                clear();
-                //destroy_deallocate_node(_head);
-                //destroy_deallocate_node(_tail);
-            }
-
+           ~Map()  {    }
 
              /***************************************************************************/
             /*** iterators --------------------------------------------------------- ***/
@@ -172,7 +166,7 @@ namespace ft
 
              /***************************************************************************/
             /*** Modifiers --------------------------------------------------------- ***/
-                ft::pair<iterator, bool> insert(const value_type& val)
+                std::pair<iterator, bool> insert(const value_type& val)
                     {
                         bool succes = _rbTree.insert(val);
                         iterator it = find(val.first);
@@ -317,12 +311,12 @@ namespace ft
 				return (beg);
 			}
 
-			ft::pair<iterator, iterator> equal_range (const key_type& k)
+			std::pair<iterator, iterator> equal_range (const key_type& k)
 			{
 				return (ft::make_pair(this->lower_bound(k), this->upper_bound(k)));
 			}
 
-			ft::pair<const_iterator, const_iterator> equal_range(const key_type& k) const
+			std::pair<const_iterator, const_iterator> equal_range(const key_type& k) const
 			{
 				return (ft::make_pair(this->lower_bound(k), this->upper_bound(k)));
 			}
@@ -332,9 +326,122 @@ namespace ft
 			protected:
 				key_compare			_comp;
 				allocator_type		_alloc;
-				tree_type			_rbTree;
+				//tree_type			_rbTree;
+
+              private:
+            
+            /*********************************/
+            /*     Member types | private    */
+            /*********************************/
+            typedef typename allocator_type::template rebind<map_node<key_type, mapped_type> >::other   node_alloc; //equivalent allocator fot type node
+            typedef typename node_alloc::pointer                                                        node_pointer;
+            typedef typename node_alloc::const_reference                                                node_const_reference;
+                
+            /****************************/
+            /*     Members | private    */
+            /****************************/
+            map_node<key_type, mapped_type> *_tail;
+            map_node<key_type, mapped_type> *_head;
+            map_node<key_type, mapped_type> *_root;
+            size_type                       _current_size;
+            node_alloc                      _alloc_for_node;
+            allocator_type                  _alloc;
+            key_compare                     _key_comp;
 
 };
+
+/*template <class Key, class T, class Compare, class Alloc>
+    bool operator==(const Map<Key,T,Compare,Alloc>& lhs, const Map<Key,T,Compare,Alloc>& rhs)
+    {
+        map::const_iterator<Key, T> lhs_it = lhs.begin();
+        map::const_iterator<Key, T> rhs_it = rhs.begin();
+        while (lhs_it != lhs.end() && *lhs_it == *rhs_it)
+        {
+            lhs_it++;
+            rhs_it++;
+        }
+        return (lhs_it == lhs.end() && rhs_it == rhs.end());
+    }
+    
+    template <class Key, class T, class Compare, class Alloc>
+    bool operator!=( const Map<Key,T,Compare,Alloc>& lhs, const Map<Key,T,Compare,Alloc>& rhs )
+    {
+        map::const_iterator<Key, T> lhs_it = lhs.begin();
+        map::const_iterator<Key, T> rhs_it = rhs.begin();
+        while (lhs_it != lhs.end() && *lhs_it == *rhs_it)
+        {
+            lhs_it++;
+            rhs_it++;
+        }
+        return (lhs_it != lhs.end() || rhs_it != rhs.end());
+    }
+    
+    template <class Key, class T, class Compare, class Alloc>
+    bool operator<(const Map<Key,T,Compare,Alloc>& lhs, const Map<Key,T,Compare,Alloc>& rhs )
+    {
+        map::const_iterator<Key, T> lhs_it = lhs.begin();
+        map::const_iterator<Key, T> rhs_it = rhs.begin();
+        while (lhs_it != lhs.end() && rhs_it != rhs.end() && *lhs_it == *rhs_it)
+        {
+            lhs_it++;
+            rhs_it++;
+        }
+        if (rhs_it == rhs.end() || (*lhs_it > *rhs_it && lhs_it != lhs.end()))
+            return (false);
+        return (true);
+    }
+    
+    template <class Key, class T, class Compare, class Alloc>
+    bool operator<=(const Map<Key,T,Compare,Alloc>& lhs, const Map<Key,T,Compare,Alloc>& rhs )
+    {
+        map::const_iterator<Key, T> lhs_it = lhs.begin();
+        map::const_iterator<Key, T> rhs_it = rhs.begin();
+        while (lhs_it != lhs.end() && rhs_it != rhs.end() && *lhs_it == *rhs_it)
+        {
+            lhs_it++;
+            rhs_it++;
+        }
+        if ((rhs_it == rhs.end() && lhs_it != lhs.end()) || (*lhs_it > *rhs_it && lhs_it != lhs.end()))
+            return (false);
+        return (true);
+    }
+    
+    template <class Key, class T, class Compare, class Alloc>
+    bool operator>(const Map<Key,T,Compare,Alloc>& lhs, const Map<Key,T,Compare,Alloc>& rhs )
+    {
+        map::const_iterator<Key, T> lhs_it = lhs.begin();
+        map::const_iterator<Key, T> rhs_it = rhs.begin();
+        while (lhs_it != lhs.end() && rhs_it != rhs.end() && *lhs_it == *rhs_it)
+        {
+            lhs_it++;
+            rhs_it++;
+        }
+        if (lhs_it == lhs.end() || (*lhs_it < *rhs_it && rhs_it != rhs.end()))
+            return (false);
+        return (true);
+    }
+    
+    template <class Key, class T, class Compare, class Alloc>
+    bool operator>=(const Map<Key,T,Compare,Alloc>& lhs, const Map<Key,T,Compare,Alloc>& rhs )
+    {
+        map::const_iterator<Key, T> lhs_it = lhs.begin();
+        map::const_iterator<Key, T> rhs_it = rhs.begin();
+        while (lhs_it != lhs.end() && rhs_it != rhs.end() && *lhs_it == *rhs_it)
+        {
+            lhs_it++;
+            rhs_it++;
+        }
+        if ((lhs_it == lhs.end() && rhs_it != rhs.end()) || (*lhs_it < *rhs_it && rhs_it != rhs.end()))
+            return (false);
+        return (true);
+    }
+
+    template <class Key, class T, class Compare, class Alloc>
+    void swap(Map<Key,T,Compare,Alloc>& x, Map<Key,T,Compare,Alloc>& y)
+    {
+        x.swap(y);
+    }
+}*/
 
 }
 
