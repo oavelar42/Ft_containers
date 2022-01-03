@@ -6,16 +6,20 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 22:35:58 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/21 22:09:04 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/03 17:49:04 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAIN_TESTER_HPP
 # define MAIN_TESTER_HPP
 
-#include <string>
-#include <iostream>
-#include <iomanip>
+# include <string>
+# include <iostream>
+# include <iomanip>
+# include <memory>
+# include <utility>
+# include <iostream>
+# include <limits>
 
 #include "map.hpp"
 #include <stack>

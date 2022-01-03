@@ -6,17 +6,17 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2021/12/21 22:02:55 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/03 17:50:44 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_tester.hpp"
 
-void print_title(std::string title, std::string subtitle)
+/*void print_title(std::string title, std::string subtitle)
 {
 	std::cout << std::endl;
   std::cout << YELLOW << title << ": " << SET << subtitle << "\n" << std::endl;
-}
+}*/
 
 int main()
 {
