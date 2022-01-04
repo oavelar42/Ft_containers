@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/04 17:57:09 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/04 22:23:39 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int main()
 	while (std::cin.get() != '\n') {}
 	test_map();
 	
-	/*print_header("VECTOR");
+	print_header("VECTOR");
 	while (std::cin.get() != '\n') {}
 	test_vector();
 
-	print_header("STACK");
+	/*print_header("STACK");
 	while (std::cin.get() != '\n') {}
 	test_stack();*/
 

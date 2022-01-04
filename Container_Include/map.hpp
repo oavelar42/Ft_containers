@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:39:48 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/04 17:39:32 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/04 18:05:15 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -531,20 +531,6 @@ namespace ft
         }
         return node;
     }
-
-    /*template< class Key, class T, class Compare, class Alloc >
-    //void map< Key, T, Compare, Alloc >::PrintInOrder(node_ptr node)
-    {
-        if (node != NULL)
-        {
-            PrintInOrder(node->left);
-            if (node == _sentinel)
-                std::cout << "Ghost: ";
-            std::cout << node->data;
-            PrintInOrder(node->right);
-        }
-        return;
-    }*/
 }
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:19:19 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/04 17:39:25 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/04 21:33:34 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,13 +250,9 @@ namespace ft
                 allocator_type get_allocator() const;
 
         private:
-                //Binary Search Tree specific functions
                 node_ptr newNode(value_type &data);
-                //void createGhost(bool add);
                 node_ptr insertNode(node_ptr node, value_type data);
-                //void _setGhost(bool add);
                 node_ptr delete_node(node_ptr node, value_type data);
-                //void     PrintInOrder(node_ptr node);
 
         private:
             allocator_type                              _alloc;

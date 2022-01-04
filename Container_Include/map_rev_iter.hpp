@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:34:57 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/04 16:12:36 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/04 18:04:46 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -344,12 +344,6 @@ namespace ft
         while (node && node->right != NULL)
             node = node->right;
         return node;
-    }
-
-    template <typename T>
-    void	printPairs(const T &iterator)
-    {
-        std::cout << "key: " << iterator->first << " | value: " << iterator->second << std::endl;
     }
 
 }
