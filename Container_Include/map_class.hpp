@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 12:19:19 by rzafari           #+#    #+#             */
-/*   Updated: 2022/01/04 09:51:45 by oavelar          ###   ########.fr       */
+/*   Created: 2021/11/28 12:19:19 by oavelar           #+#    #+#             */
+/*   Updated: 2022/01/04 17:39:25 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,21 @@ namespace ft
         return flux;
     }
 
-    ////////////////////////
-    //        MAP        //
-    ///////////////////////
+    /*********************/
+    /*                   */
+    /*     Class Map     */
+    /*                   */
+    /*********************/
 
     template < class Key, class T, class Compare = ft::less<Key>, class Alloc = std::allocator<ft::pair<const Key,T> > >
     class map
     {
         public:
+
+            /************************/
+            /*     Member types     */
+            /************************/
+
             typedef Key                                                         key_type;
             typedef T                                                           mapped_type;
             typedef pair<const key_type, mapped_type>			                value_type;
@@ -120,7 +127,10 @@ namespace ft
             typedef node_type*                                                  node_ptr;
             typedef typename allocator_type::template rebind<node_type>::other  _new;
 
-            //Iterators
+              ////////////////////////
+             //      Iterator      //
+            ////////////////////////
+
             typedef ft::MapIter<value_type, node_type>          iterator;
             typedef ft::MapIter<const value_type, node_type>    const_iterator;
             typedef ft::reverse_iterator<iterator>              reverse_iterator;
@@ -144,20 +154,35 @@ namespace ft
                     }
             };
 
-            //Member functions
-                //Constructors
-                explicit map(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()); //empty
+                /****************************/
+                /*     Member functions     */
+                /****************************/
+
+                /***************************************************************************/
+                /*** constructors ------------------------------------------------------ ***/
+
+                explicit map(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()); 
+               
                 template <class InputIterator>
-                        map(InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()); //range
-                map (const map& x); //copy
+                        map(InputIterator first, InputIterator last, const key_compare& comp = key_compare(),
+                            const allocator_type& alloc = allocator_type());
+                
+                map (const map& x); 
 
-                // Destructor
-                ~map();
+                 /***************************************************************************/
+                /*** operator= --------------------------------------------------------- ***/
 
-                //Operator=
                 map& operator=(const map& x);
 
-                //Iterators
+                 /***************************************************************************/
+                /*** destructor -------------------------------------------------------- ***/
+
+                ~map();
+
+                  ////////////////////////
+                 //      Iterator      //
+                ////////////////////////
+
                 iterator begin();
                 const_iterator begin() const;
                 iterator end();
@@ -167,15 +192,24 @@ namespace ft
                 reverse_iterator rend();
                 const_reverse_iterator rend() const;
 
-                //Capacity
+                  ////////////////////////
+                 //      Capacity      //
+                ////////////////////////
+
                 bool empty() const;
                 size_type size() const;
                 size_type max_size() const;
 
-                //Element Access
+                  ////////////////////////
+                 //    Element acess   //
+                ////////////////////////
+
                 mapped_type& operator[] (const key_type& k);
 
-                //Modifiers
+                  ////////////////////////
+                 //      Modifiers     //
+                ////////////////////////
+
                 pair<iterator,bool> insert(const value_type& val);
                 iterator insert (iterator position, const value_type& val);
                 template <class InputIterator>
@@ -188,11 +222,17 @@ namespace ft
                 void swap (map& x);
                 void clear();
 
-                //Observers
+                  ////////////////////////
+                 //     Observers      //
+                ////////////////////////
+
                 key_compare key_comp() const;
                 value_compare value_comp() const;
 
-                //Operation
+                  ////////////////////////
+                 //     Operation      //
+                ////////////////////////
+
                 iterator find (const key_type& k);
                 const_iterator find (const key_type& k) const;
                 size_type count (const key_type& k) const;
@@ -203,17 +243,20 @@ namespace ft
                 pair<const_iterator,const_iterator> equal_range (const key_type& k) const;
                 pair<iterator,iterator>             equal_range (const key_type& k);
 
-                //Allocator
+                  ////////////////////////
+                 //     Allocator      //
+                ////////////////////////
+
                 allocator_type get_allocator() const;
 
         private:
                 //Binary Search Tree specific functions
                 node_ptr newNode(value_type &data);
-                void createGhost(bool add);
+                //void createGhost(bool add);
                 node_ptr insertNode(node_ptr node, value_type data);
-                void _setGhost(bool add);
+                //void _setGhost(bool add);
                 node_ptr delete_node(node_ptr node, value_type data);
-                void     PrintInOrder(node_ptr node);
+                //void     PrintInOrder(node_ptr node);
 
         private:
             allocator_type                              _alloc;
@@ -228,6 +271,10 @@ namespace ft
          public:
             node_ptr    get_root(){ return this->_root;};
     };
+
+      ////////////////////////////////////////
+     //     Non-member func overloads      //
+    ////////////////////////////////////////
 
     template<class Key, class T, class Compare, class Alloc>
     bool operator==(const map<Key, T, Compare, Alloc>& lhs, const map<Key, T, Compare, Alloc>& rhs)

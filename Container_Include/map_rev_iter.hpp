@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 12:34:57 by rzafari           #+#    #+#             */
-/*   Updated: 2022/01/04 09:51:10 by oavelar          ###   ########.fr       */
+/*   Created: 2021/11/28 12:34:57 by oavelar           #+#    #+#             */
+/*   Updated: 2022/01/04 16:12:36 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,12 @@ namespace ft
             friend class MapIter;
     };
 
+        /****************************/
+        /*                          */
+        /*     Reverse_iterator     */
+        /*                          */
+        /****************************/
+
     template < class Iterator >
     class reverse_iterator
     {
@@ -112,19 +118,36 @@ namespace ft
             Iterator _base;
 
         public:
+
+               /************************/
+              /*     Member types     */
+             /************************/
+
             typedef Iterator        iterator_type;
             typedef typename Iterator::difference_type      difference_type;
             typedef typename Iterator::pointer              pointer;
             typedef typename Iterator::reference            reference;
 
-            //Member Functions
-                //Constructors
-                reverse_iterator() : _base() {} //default
-                explicit reverse_iterator(iterator_type it) : _base(it) {}//initialization
+                 /****************************/
+                /*     Member functions     */
+               /****************************/
+
+                /***************************************************************************/
+               /*** constructors ------------------------------------------------------ ***/
+                reverse_iterator() : _base() {} 
+                explicit reverse_iterator(iterator_type it) : _base(it) {}
                 template < class Iter >
-                    reverse_iterator(const reverse_iterator<Iter>& rev_it) : _base(rev_it.base()) {} //copy
+                    reverse_iterator(const reverse_iterator<Iter>& rev_it) : _base(rev_it.base()) {} 
+               
+                /***************************************************************************/
+               /*** operator= --------------------------------------------------------- ***/
+               
                 template <class Iter> 
                     reverse_iterator &operator=(const reverse_iterator<Iter> &x) { _base = x.base(); return *this; };
+
+
+                 /***************************************************************************/
+                /*** overloads --------------------------------------------------------- ***/
 
                 iterator_type       base() const { return _base; };
                 reference           operator*() const { Iterator tmp = _base; return *--tmp; };
@@ -190,9 +213,6 @@ namespace ft
             return lhs.base() - rhs.base();
         }
 
-        //rand map iter
-
-
     template < class T >
     class RandAccess
     {
@@ -239,7 +259,8 @@ namespace ft
     };
 
 
-      //utils
+      /***************************************************************************/
+     /****** UTILS ---------------------------------------------------------- ***/
 
     template <bool, class _Tp = void>
     struct enable_if {};

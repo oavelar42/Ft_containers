@@ -6,11 +6,14 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/04 11:02:05 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/04 17:57:09 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_tester.hpp"
+#include <iostream>
+#include <stdlib.h>
+#include <string.h>
 
 void print_title(std::string title, std::string subtitle)
 {
@@ -31,6 +34,9 @@ void print_header(std::string container_name)
 
 int main()
 {
+	print_header("MAP");
+	while (std::cin.get() != '\n') {}
+	test_map();
 	
 	/*print_header("VECTOR");
 	while (std::cin.get() != '\n') {}
@@ -40,9 +46,7 @@ int main()
 	while (std::cin.get() != '\n') {}
 	test_stack();*/
 
-	print_header("MAP");
-	while (std::cin.get() != '\n') {}
-	test_map();
+	system("leaks identify | grep bytes");
 
 	return 0;
 }

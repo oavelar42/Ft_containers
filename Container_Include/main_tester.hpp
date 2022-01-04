@@ -6,12 +6,13 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 22:35:58 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/04 10:59:40 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/04 17:39:19 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAIN_TESTER_HPP
 # define MAIN_TESTER_HPP
+
 #define GREEN "\033[0;32m"
 #define RED "\033[0;31m"
 #define YELLOW "\033[0;33m"

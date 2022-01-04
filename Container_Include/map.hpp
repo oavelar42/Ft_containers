@@ -5,13 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/29 10:39:48 by rzafari           #+#    #+#             */
-/*   Updated: 2022/01/04 09:46:17 by oavelar          ###   ########.fr       */
+/*   Created: 2021/11/29 10:39:48 by oavelar           #+#    #+#             */
+/*   Updated: 2022/01/04 17:39:32 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_HPP
 # define MAP_HPP
+
+# include <iostream>
+# include <cstddef>
+# include <memory>
+# include <limits>
+# include <utility>
 # include "map_class.hpp"
 
 namespace ft
@@ -46,7 +52,9 @@ namespace ft
             _node_alloc.deallocate(_sentinel, 1);
     }
 
-    //Operator=
+     /***************************************************************************/
+    /*** operator= --------------------------------------------------------- ***/
+    
     template <class Key, class T, class Compare, class Alloc >
     map< Key, T, Compare, Alloc >& map< Key, T, Compare, Alloc >::operator=(const map& x)
     {
@@ -66,7 +74,9 @@ namespace ft
         return *this;
     }
 
-    //Iterators
+       ////////////////////////
+      //      Iterator      //
+     ////////////////////////
 
     template< class Key, class T, class Compare, class Alloc >
     typename map< Key, T, Compare, Alloc>::iterator map< Key, T, Compare, Alloc>::begin()
@@ -116,7 +126,10 @@ namespace ft
         return const_reverse_iterator(begin());
     }
 
-    //Capacity
+        ////////////////////////
+       //      Capacity      //
+      ////////////////////////
+
     template <class Key, class T, class Compare, class Alloc >
     bool map< Key, T, Compare, Alloc >::empty() const
     {
@@ -139,14 +152,21 @@ namespace ft
         return ret.max_size();
     }
     
-    //Element Access
+       ////////////////////////
+      //    Element acess   //
+     ////////////////////////
+
+
     template< class Key, class T, class Compare, class Alloc >
     typename map< Key, T, Compare, Alloc>::mapped_type& map< Key, T, Compare, Alloc >::operator[] (const key_type& k)
     {
         return (*((this->insert(value_type(k, mapped_type()))).first)).second;
     }
 
-    //Modifiers
+       ////////////////////////
+      //      Modifiers     //
+     ////////////////////////
+
     template< class Key, class T, class Compare, class Alloc >
     pair<typename map<Key, T, Compare, Alloc>::iterator, bool> map< Key, T, Compare, Alloc >::insert(const value_type& val)
     {
@@ -256,7 +276,11 @@ namespace ft
         _root = NULL;
     }
 
-    //Observers
+       ////////////////////////
+      //     Observers      //
+     ////////////////////////
+    
+    
     template< class Key, class T, class Compare, class Alloc >
     typename map< Key, T, Compare, Alloc >::key_compare map< Key, T, Compare, Alloc >::key_comp() const
     {
@@ -269,7 +293,11 @@ namespace ft
         return value_compare(key_compare());
     }
 
-    //Operation
+        ////////////////////////
+       //     Operation      //
+      ////////////////////////
+
+
     template< class Key, class T, class Compare, class Alloc >
     typename map< Key, T, Compare, Alloc >::iterator map< Key, T, Compare, Alloc >::find(const key_type& k)
     {
@@ -401,7 +429,10 @@ namespace ft
         return ret;
     }
 
-    //Allocator
+       ////////////////////////
+      //     Allocator      //
+     ////////////////////////
+
     template< class Key, class T, class Compare, class Alloc >
     typename map< Key, T, Compare, Alloc >::allocator_type map< Key, T, Compare, Alloc >::get_allocator() const
     {
@@ -501,8 +532,8 @@ namespace ft
         return node;
     }
 
-    template< class Key, class T, class Compare, class Alloc >
-    void map< Key, T, Compare, Alloc >::PrintInOrder(node_ptr node)
+    /*template< class Key, class T, class Compare, class Alloc >
+    //void map< Key, T, Compare, Alloc >::PrintInOrder(node_ptr node)
     {
         if (node != NULL)
         {
@@ -513,8 +544,7 @@ namespace ft
             PrintInOrder(node->right);
         }
         return;
-    }
-
-    //rand access
+    }*/
 }
+
 #endif
