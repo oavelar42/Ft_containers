@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:34:57 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/04 18:04:46 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/05 11:40:25 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,14 @@ namespace ft
 
                 /***************************************************************************/
                /*** constructors ------------------------------------------------------ ***/
+               
+               /* Default */ 
                 reverse_iterator() : _base() {} 
+                
+                /* Init */
                 explicit reverse_iterator(iterator_type it) : _base(it) {}
+                
+                /* Copy , estou iniciando const_rev_iter com parametro em rever_iter */
                 template < class Iter >
                     reverse_iterator(const reverse_iterator<Iter>& rev_it) : _base(rev_it.base()) {} 
                
@@ -164,7 +170,8 @@ namespace ft
                 reverse_iterator&   operator-=(difference_type n) { _base += n; return *this; };
                 reference           operator[](difference_type n) const { return *(*this + n); };
     };
-    
+
+     /*  Funções para comoparar se e const ou não-const  */
     template <class Iterator1, class Iterator2>
     bool operator==(const reverse_iterator<Iterator1>& lhs, const reverse_iterator<Iterator2>& rhs)
     {
@@ -213,6 +220,8 @@ namespace ft
             return lhs.base() - rhs.base();
         }
 
+    /*  Class randon para acesso iter     */
+   /*      todas as calculos necessarios */
     template < class T >
     class RandAccess
     {
@@ -262,6 +271,12 @@ namespace ft
       /***************************************************************************/
      /****** UTILS ---------------------------------------------------------- ***/
 
+
+    /*  struct enable_if : */
+        /*  pode ser usado como um argumento de função adicional  */ 
+       /*   pode ser usado como um tipo de retorno               */ 
+      /*    pode ser usado como um modelo de classe 
+                            ou parâmetro de modelo de função   */
     template <bool, class _Tp = void>
     struct enable_if {};
     
@@ -277,19 +292,28 @@ namespace ft
         return i;
     }
 
+    /*  lexicographical_compare é :  */ 
+        /*  Dois intervalos são comparados elemento por elemento.                                                                   */
+       /*  O primeiro elemento incompatível define qual intervalo é lexicograficamente menor ou maior que o outro.                 */
+      /*  Se um intervalo for um prefixo de outro, o intervalo mais curto será lexicograficamente menor que o outro.              */
+     /*  Se dois intervalos têm elementos equivalentes e são do mesmo comprimento, os intervalos são lexicograficamente iguais . */
+    /*  Um intervalo vazio é lexicograficamente menor do que qualquer intervalo não vazio.                                      */
+   /*  Dois intervalos vazios são lexicograficamente iguais                                                                    */
+   
     template <class InputIterator1, class InputIterator2>
     bool lexicographical_compare (InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, InputIterator2 last2)
     {   
-        while (first1!=last1)
+        while (first1 != last1)                       
         {
-            if (first2==last2 || *first2<*first1)
+            if (first2 == last2 || *first2 < *first1)   // retorna falso se chegar ao fim
                 return false;
-            else if (*first1<*first2)
+            else if (*first1 < *first2)               // retorna verdadeiro se 1 for maior que 2
                 return true;
-            ++first1; ++first2;
+            ++first1; 
+            ++first2;
         }
-        return (first2!=last2);
-    }
+        return (first2 != last2);                  // retorna true se completar os 2 container
+    }                                             // se não retorna falso
 
     template <class InputIterator1, class InputIterator2>
 	bool equal (InputIterator1 first1, InputIterator1 last1, InputIterator2 first2)

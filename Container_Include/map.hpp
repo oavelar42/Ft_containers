@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:39:48 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/04 18:05:15 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/05 11:53:53 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,15 @@ namespace ft
       //      Iterator      //
      ////////////////////////
 
+    /* 
+
+        Categoria	-	a categoria do iterador. Deve ser uma das tags de categoria do iterador .
+        T	-	o tipo dos valores que podem ser obtidos retirando a referência do iterador. Este tipo deve ser voidpara iteradores de saída.
+        Distância	-	um tipo que pode ser usado para identificar a distância entre iteradores
+        Pointer	-	define um ponteiro para o tipo iterado em ( T)
+        Referência	-	define uma referência ao tipo iterado em ( T)
+
+    */
     template< class Key, class T, class Compare, class Alloc >
     typename map< Key, T, Compare, Alloc>::iterator map< Key, T, Compare, Alloc>::begin()
     {
@@ -439,7 +448,7 @@ namespace ft
         return _alloc;
     }
 
-    //Binary Search Tree specific functions
+    /*  Funções específicas de busca binária */
     template< class Key, class T, class Compare, class Alloc >
     typename map<Key, T, Compare, Alloc >::node_ptr map< Key, T, Compare, Alloc >::newNode(value_type &data)
     {
