@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:19:19 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/05 10:55:52 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/06 11:11:10 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ namespace ft
 		pair& operator=(const pair& pr) { first = pr.first; second = pr.second; return *this; };
 	};
 
+     /*  Operadores de comparação   */
     template <class T1, class T2>
     bool operator==(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs) 
     { 
@@ -284,7 +285,7 @@ namespace ft
      //     Non-member func overloads      //
     ////////////////////////////////////////
 
-    /*  Operadores relacionais*/
+    /*  Operadores relacionais */
     template<class Key, class T, class Compare, class Alloc>
     bool operator==(const map<Key, T, Compare, Alloc>& lhs, const map<Key, T, Compare, Alloc>& rhs)
     {

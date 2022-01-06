@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:34:57 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/05 11:40:25 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/05 15:30:51 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ namespace ft
             Node    *_node;
             MapIter(Node *src) { _node = src; } 
 
+        /*  iter traits  */
         public:
             typedef T                   value_type;
             typedef value_type&         reference;
@@ -171,7 +172,7 @@ namespace ft
                 reference           operator[](difference_type n) const { return *(*this + n); };
     };
 
-     /*  Funções para comoparar se e const ou não-const  */
+     /*  Funções para comparar se e const ou não-const  */
     template <class Iterator1, class Iterator2>
     bool operator==(const reverse_iterator<Iterator1>& lhs, const reverse_iterator<Iterator2>& rhs)
     {
