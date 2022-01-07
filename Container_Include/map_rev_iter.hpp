@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:34:57 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/05 15:30:51 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/07 19:24:18 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,7 @@ namespace ft
             return lhs.base() - rhs.base();
         }
 
-    /*  Class randon para acesso iter     */
+    /*  Class random para acesso iter     */
    /*      todas as calculos necessarios */
     template < class T >
     class RandAccess

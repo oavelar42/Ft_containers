@@ -6,18 +6,16 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 22:11:56 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/06 18:06:00 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/07 23:23:30 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.hpp"
 #include "main_tester.hpp"
 #include <vector>
 #include <stack>
 #include <map>
 #include <iostream>
 #include <cstddef>
-#include "map.hpp" 
 #include <time.h>
 
 void print_vector(ft::vector<int> vector, std::string name)
@@ -60,17 +58,17 @@ void test_vector(void)
 	print_size(ft_vector_fill, "ft_vector_fill");
 	print_vector(ft_vector_fill, "ft_vector_fill");
 
-	print_title("RANGE CONSTRUCTOR", "ft::vector & std::vector");
+	print_title("RANGE CONSTRUCTOR", "ft::vector");
 	ft::vector<int> ft_vector_range(ft_vector_fill.begin(), ft_vector_fill.end());
 	print_size(ft_vector_range, "ft_vector_range");
 	print_vector(ft_vector_range, "ft_vector_range");
 
-	print_title("COPY CONSTRUCTOR (copy of range)", "ft::vector & std::vector");
+	print_title("COPY CONSTRUCTOR (copy of range)", "ft::vector");
 	ft::vector<int> ft_vector_copy(ft_vector_range);
 	print_size(ft_vector_copy, "ft_vector_copy");
 	print_vector(ft_vector_copy, "ft_vector_copy");
 
-	print_title("ASSIGNATION OPERATOR", "ft::vector & std::vector");
+	print_title("ASSIGNATION OPERATOR", "ft::vector");
 	ft::vector<int> ft_vector_assignation;
 	ft_vector_assignation = ft_vector_copy;
 	print_size(ft_vector_assignation, "ft_vector_assignation");
@@ -135,11 +133,10 @@ void test_vector(void)
 	try
 	{
 		ft_vector.reserve(ft_vector.max_size() + 1);
-		// ft_vector.reserve(4611686018427387904);
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << "Error : Exceeds supported size." << std::endl;
 	}
 	
 	std::cout << std::endl;

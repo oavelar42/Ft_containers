@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 22:12:05 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/06 11:11:56 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/07 23:10:21 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 # include <iostream>
 # include "vector.hpp"
+# include "map.hpp"
+# include "map_class.hpp"
 # include "map_rev_iter.hpp"
+
 
 namespace ft
 {
@@ -33,7 +36,7 @@ namespace ft
               /************************/
              /*     Member types     */
             /************************/
-
+            
             typedef T                                           value_type;
             typedef Alloc                                       allocator_type;
             typedef typename allocator_type::reference          reference;
@@ -117,7 +120,7 @@ namespace ft
             typedef ft::reverse_iterator<const_iterator>       const_reverse_iterator;
 
         public:
-            
+
                 /****************************/
                 /*     Member functions     */
                 /****************************/
@@ -129,18 +132,17 @@ namespace ft
                 explicit vector(const allocator_type& alloc = allocator_type());
 
                 /* Fill */ 
-                explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()); 
+                explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type());
                 
                 /*  Copy  */
                 template <class InputIterator>
-                    vector(typename ft::enable_if<!std::numeric_limits<InputIterator>::is_integer, InputIterator>::type first, InputIterator last, const allocator_type& alloc = allocator_type()); //range
-                vector(const vector& x);
+                    vector(typename ft::enable_if<!std::numeric_limits<InputIterator>::is_integer, InputIterator>::type first, InputIterator last, const allocator_type& alloc = allocator_type());
+                vector(const vector& x); 
 
                  /***************************************************************************/
                 /*** operator= --------------------------------------------------------- ***/
-                
-                vector& operator=(const vector& x);
 
+                vector& operator=(const vector& x);
                 
                  /***************************************************************************/
                 /*** destructor -------------------------------------------------------- ***/
@@ -183,11 +185,11 @@ namespace ft
                 const_reference front() const;
                 reference       back();
                 const_reference back() const;
-
+                  
                   ////////////////////////
                  //      Modifiers     //
                 ////////////////////////
-
+                
                 template <class InputIterator>
                     void        assign (typename ft::enable_if<!std::numeric_limits<InputIterator>::is_integer, InputIterator>::type first, InputIterator last);
                 void            assign(size_type n, const value_type& val);
@@ -216,26 +218,26 @@ namespace ft
             size_type       _max_size;
     };
 
-      ////////////////////////////////////////
-     //     Non-member func overloads      //
-    ////////////////////////////////////////
+          ////////////////////////////////////////
+         //     Non-member func overloads      //
+        ////////////////////////////////////////
 
-    /*  Operadores relacionais */
-    template <class T, class Alloc>
-        bool operator==(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-    template <class T, class Alloc>
-        bool operator!=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-    template <class T, class Alloc>
-        bool operator<(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-    template <class T, class Alloc>
-        bool operator<=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-    template <class T, class Alloc>
-        bool operator>(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-    template <class T, class Alloc>
-        bool operator>=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-
-    template <class T, class Alloc>
-        void swap(vector<T,Alloc>& x, vector<T,Alloc>& y);
+        /*  Operadores relacionais */
+        template <class T, class Alloc>
+            bool operator==(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+        template <class T, class Alloc>
+            bool operator!=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+        template <class T, class Alloc>
+            bool operator<(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+        template <class T, class Alloc>
+            bool operator<=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+        template <class T, class Alloc>
+            bool operator>(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+        template <class T, class Alloc>
+            bool operator>=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
+            
+        template <class T, class Alloc>
+            void swap(vector<T,Alloc>& x, vector<T,Alloc>& y);
 }
 
 #endif

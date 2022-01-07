@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/04 22:23:39 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/07 22:07:32 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void print_title(std::string title, std::string subtitle)
 {
 	std::cout << std::endl;
-  std::cout << YELLOW << title << ": " << OFF << subtitle << "\n" << std::endl;
+  	std::cout << YELLOW << title << ": " << OFF << LET " " << subtitle << "\n" << std::endl;
 }
 
 void print_header(std::string container_name)
