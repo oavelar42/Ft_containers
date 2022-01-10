@@ -6,18 +6,11 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/04 22:27:04 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/10 13:59:42 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_tester.hpp"
-#include <vector>
-#include <stack>
-#include <map>
-#include <iostream>
-#include <cstddef>
-#include "map.hpp" 
-#include <time.h>
 
 void print_map(ft::map<char, int> map, std::string name)
 {

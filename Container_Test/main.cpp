@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/07 22:07:32 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/10 13:51:48 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int main()
 	while (std::cin.get() != '\n') {}
 	test_vector();
 
-	/*print_header("STACK");
+	print_header("STACK");
 	while (std::cin.get() != '\n') {}
-	test_stack();*/
+	test_stack();
 
 	system("leaks identify | grep bytes");
 
