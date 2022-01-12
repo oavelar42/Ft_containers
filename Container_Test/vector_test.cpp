@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:11:56 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/10 13:59:11 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/12 23:06:00 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void test_vector(void)
 	print_size(ft_vector, "ft_vector");
 
 
-	print_title("VECTOR RESERVE(max_size)");
+	/*print_title("VECTOR RESERVE(max_size)");
 	try
 	{
 		ft_vector.reserve(ft_vector.max_size());
@@ -131,7 +131,7 @@ void test_vector(void)
 	catch (std::exception &e)
 	{
 		std::cerr << "Error : Exceeds supported size." << std::endl;
-	}
+	}*/
 	
 	std::cout << std::endl;
 

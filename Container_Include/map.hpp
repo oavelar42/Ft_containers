@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:39:48 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/07 18:39:16 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/12 23:26:14 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -448,7 +448,7 @@ namespace ft
         return _alloc;
     }
 
-    /*  Funções específicas de busca binária */
+    /*  Funções específicas de buscar , inserir, construir */
     template< class Key, class T, class Compare, class Alloc >
     typename map<Key, T, Compare, Alloc >::node_ptr map< Key, T, Compare, Alloc >::newNode(value_type &data)
     {

@@ -6,7 +6,7 @@
 #    By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 16:24:00 by oavelar           #+#    #+#              #
-#    Updated: 2022/01/04 14:49:25 by oavelar          ###   ########.fr        #
+#    Updated: 2022/01/12 23:29:01 by oavelar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ ifeq ($(shell uname), Linux)
 else
  CC = clang++
 endif
-FLAGS = -Wall -Wextra -Werror -std=c++98 #-std=c++11 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 INCS_DIR	= Container_Include
 MAIN_INC	= -I$(INCS_DIR)

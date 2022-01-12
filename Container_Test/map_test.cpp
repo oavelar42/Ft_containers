@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/10 13:59:42 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/12 23:26:13 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ void print_map(std::map<char, int> map, std::string name)
 void print_size(ft::map<char, int> map, std::string name)
 {
   std::cout << name << " size: " << map.size() << ", max_size: " << map.max_size() << std::endl;
-  std::cout << name << " empty() (1: true 0:false): " << map.empty() << std::endl;
+  std::cout << name << " empty() (1: true 0: false): " << map.empty() << std::endl;
   std::cout << std::endl;
 }
 
 void print_size(std::map<char, int> map, std::string name)
 {
   std::cout << name << " size: " << map.size() << ", max_size: " << map.max_size() << std::endl;
-  std::cout << name << " empty() (1: true 0:false): " << map.empty() << std::endl;
+  std::cout << name << " empty() (1: true 0: false): " << map.empty() << std::endl;
   std::cout << std::endl;
-}
+} 
 
 void test_map(void)
 {
@@ -50,6 +50,7 @@ void test_map(void)
 	
   std::cout << "\n";
   print_title("CONSTRUCTOR", "ft::map");
+
   ft::map<char, int> ft_map;
   print_size(ft_map, "ft_map");
 
@@ -61,17 +62,17 @@ void test_map(void)
   print_map(ft_map, "ft_map");
   print_size(ft_map, "ft_map");
 
-  print_title("RANGE", "ft::map & std::map");
+  print_title("RANGE", "ft::map");
   ft::map<char, int> ft_map_range(ft_map.begin(), ft_map.end());
   print_size(ft_map_range, "ft_map_range");
   print_map(ft_map_range, "ft_map_range");
 
-  print_title("COPY CONSTRUCTOR (copy of range)", "ft::map & std::map");
+  print_title("COPY CONSTRUCTOR (copy of range)", "ft::map");
   ft::map<char, int> ft_map_copy(ft_map_range);
   print_size(ft_map_copy, "ft_map_copy");
   print_map(ft_map_copy, "ft_map_copy");
 
-print_title("ASSIGNATION OPERATOR", "ft::map & std::map");
+	print_title("ASSIGNATION OPERATOR", "ft::map");
   ft::map<char, int> ft_map_assignation;
   ft_map_assignation = ft_map_copy;
   print_size(ft_map_assignation, "ft_map_assignation");
@@ -105,7 +106,7 @@ print_title("ASSIGNATION OPERATOR", "ft::map & std::map");
   print_title("MAP INSERT(val)");
   for (int i = 14; i <= 19; i++, c++)
   {
-	ft_map.insert(ft::make_pair(c, i));
+	  ft_map.insert(ft::make_pair(c, i));
   }
   print_map(ft_map, "ft_map");
   print_size(ft_map, "ft_map");
@@ -113,7 +114,7 @@ print_title("ASSIGNATION OPERATOR", "ft::map & std::map");
   print_title("MAP INSERT(position, val)");
   for (int i = 20; i <= 26; i++, c++)
   {
-	ft_map.insert(ft::make_pair(c, i));
+	  ft_map.insert(ft::make_pair(c, i));
   }
   print_map(ft_map, "ft_map");
   print_size(ft_map, "ft_map");
@@ -138,7 +139,7 @@ print_title("ASSIGNATION OPERATOR", "ft::map & std::map");
   c = 'n';
   for (int i = 0; i < 6; i++, c++)
   {
-	ft_map_copy.erase(c);
+	  ft_map_copy.erase(c);
   }
   print_map(ft_map_copy, "ft_map_copy");
   print_size(ft_map_copy, "ft_map_copy");
@@ -207,10 +208,10 @@ print_title("ASSIGNATION OPERATOR", "ft::map & std::map");
 
   ft::map<char,int>::iterator it = ft_map.begin();
   while (ft_map.value_comp()(*it, highest) \
-	&& mycomp((*it).first, highest_key))
+	  && mycomp((*it).first, highest_key))
   {
-	std::cout << it->first << " => " << it->second << '\n';
-	it++;
+	  std::cout << it->first << " => " << it->second << '\n';
+	  it++;
   }
 	std::cout << "\n";
 	int end = clock();
@@ -223,6 +224,9 @@ print_title("ASSIGNATION OPERATOR", "ft::map & std::map");
 
 
 /*
+	map e basicamente um container que tem a chave e o tamanho ( ft::map < chave, tamanho > map)
+	uso o iterator para poder navegar dentro desse map e encotrar o que solicito de acordo com as funções
+
 	begin () - Retorna um iterador para o primeiro elemento no mapa 
 	end () - Retorna um iterador para o elemento teórico que segue o último elemento no mapa
 	size () - Retorna o número de elementos no map
@@ -231,4 +235,11 @@ print_title("ASSIGNATION OPERATOR", "ft::map & std::map");
 	   (posição do iterador)- Remove o elemento na posição apontada pelo iterador
 	erase (const g) - Remove o valor-chave g do mapa
 	clear () - Remove todos os elementos do mapa 
+
+	iterator -	server para navegar em uma coleçao de dados , podemos dizer que um iterator
+				vai apontar para um item dentro de um container ,
+
+	 const_iterator - 
+
+
 */
