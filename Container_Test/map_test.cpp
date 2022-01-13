@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/12 23:26:13 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/13 18:51:59 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,12 +153,13 @@ void test_map(void)
   print_title("BEFORE SWAP");
   print_map(ft_map_range, "ft_map_range");
   print_map(ft_map_copy, "ft_map_copy");
+
   ft_map_range.swap(ft_map_copy);
   print_title("AFTER SWAP");
   print_map(ft_map_range, "ft_map_range");
   print_map(ft_map_copy, "ft_map_copy");
 
-  print_title("MAP CLEAR", "clearing map copy again");
+  print_title("MAP CLEAR", "clearing map");
   print_title("BEFORE");
   print_map(ft_map_copy, "ft_map_copy");
   print_size(ft_map_copy, "ft_map_copy");
@@ -224,11 +225,14 @@ void test_map(void)
 
 
 /*
-	map e basicamente um container que tem a chave e o tamanho ( ft::map < chave, tamanho > map)
+	MAP e basicamente um container que tem a chave e o tamanho ( ft::map < chave, tamanho > map)
 	uso o iterator para poder navegar dentro desse map e encotrar o que solicito de acordo com as funções
-
-	begin () - Retorna um iterador para o primeiro elemento no mapa 
+  
+  --- principais funçoes de MAP:
+	
+  begin () - Retorna um iterador para o primeiro elemento no mapa 
 	end () - Retorna um iterador para o elemento teórico que segue o último elemento no mapa
+  at() a função é usada para retornar a referência ao elemento associado à chave
 	size () - Retorna o número de elementos no map
 	max_size () - Retorna o número máximo de elementos que o mapa pode conter
 	empty () - Retorna se o mapa está vazio, insert par (keyvalue, mapvalue) - Adiciona um novo elemento para apagar o mapa
@@ -236,10 +240,26 @@ void test_map(void)
 	erase (const g) - Remove o valor-chave g do mapa
 	clear () - Remove todos os elementos do mapa 
 
+  lower_bound retorna um iterador apontando para o primeiro elemento no intervalo 
+      [first, last) que tem um valor não inferior a 'val '. 
+  upper_bound retorna um iterador apontando para o primeiro elemento no intervalo 
+      [primeiro, último) que tem um valor maior que 'val'. 
+
+  operator[] – Este operador é usado para referenciar o elemento presente na posição dada dentro do operador.
+
+  equal_range() em C++ STL – Retorna um iterador de pares. O par refere-se aos limites de um intervalo que 
+      inclui todos os elementos do contêiner que possuem uma chave equivalente a k
+
 	iterator -	server para navegar em uma coleçao de dados , podemos dizer que um iterator
 				vai apontar para um item dentro de um container ,
 
-	 const_iterator - 
+	const_iterator - 
 
+
+  insert - e utilizada para inserir elementos de uma chave especifica no container 
+            ex.:   insert < chave , elemento >
+
+  pair - usada para combinar 2 valores que podem ser de tipos de diferentes 
+          ex.: pair < int , char >
 
 */

@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:11:56 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/12 23:06:00 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/13 23:02:09 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,11 +271,33 @@ void test_vector(void)
 
 
 /*
-		Constructors
-		default, fill, copy, assignation operator
-		Accessors, iterators, getters, setters:
-		iterator, const_iterator, reverse_iterator, const_reverse_iterator, begin, end, rbegin, rend
-		size, max_size, resize, capacity, empty, reserve
-		operator[], front, back
-		assign, push_back, pop_back, insert, erase, swap, clear
+	Os vetores são iguais aos arrays dinâmicos com a capacidade de se redimensionar automaticamente quando
+		 um elemento é inserido ou excluído, com seu armazenamento sendo tratado automaticamente pelo contêiner. 
+		 Os elementos vetoriais são colocados em armazenamento contíguo para que possam ser acessados ​​e percorridos
+		  usando iteradores. Nos vetores, os dados são inseridos no final
+
+	--- principais funçoes de vector que sao assoaciadas a iterator:
+	
+  	begin () - Retorna um iterador para o primeiro elemento no mapa 
+	end () - Retorna um iterador para o elemento teórico que segue o último elemento no mapa
+	rbegin() – Retorna um iterador reverso apontando para o último elemento no vetor (início reverso). Ele se move do último para o primeiro elemento
+	rend() – Retorna um iterador reverso apontando para o elemento teórico que precede o primeiro elemento no vetor (considerado como final reverso)
+	cbegin() – Retorna um iterador constante apontando para o primeiro elemento no vetor.
+	cend() – Retorna um iterador constante apontando para o elemento teórico que segue o último elemento no vetor.
+	crbegin() – Retorna um iterador reverso constante apontando para o último elemento no vetor (início reverso). Ele se move do último para o primeiro elemento
+	crend() – Retorna um iterador reverso constante apontando para o elemento teórico que precede o primeiro elemento no vetor (considerado como final reverso)
+
+
+	resize(n) – Redimensiona o contêiner para que contenha 'n' elementos.
+	reserve() – Solicita que a capacidade do vetor seja pelo menos suficiente para conter n elementos.
+
+	at(g) – Retorna uma referência ao elemento na posição 'g' no vetor
+	front() – Retorna uma referência ao primeiro elemento do vetor
+	back() – Retorna uma referência ao último elemento do vetor
+
+	assign() – Atribui um novo valor aos elementos do vetor substituindo os antigos
+	push_back() – Ele empurra os elementos para um vetor de trás
+	pop_back() – É usado para pop ou remover elementos de um vetor da parte de trás.
+	insert() – Insere novos elementos antes do elemento na posição especificada
+	erase() – É usado para remover elementos de um contêiner da posição ou intervalo especificado.
 */
