@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/13 18:51:59 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/14 21:34:40 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,12 @@ void print_map(ft::map<char, int> map, std::string name)
 	std::cout << std::endl;
 }
 
-void print_map(std::map<char, int> map, std::string name)
-{
-  std::cout << name << ":\n";
-  for (std::map<char, int>::iterator it = map.begin(); it != map.end(); it++)
-	std::cout << (*it).first << " = " << (*it).second << ", ";
-  std::cout << std::endl;
-  std::cout << std::endl;
-}
-
 void print_size(ft::map<char, int> map, std::string name)
 {
   std::cout << name << " size: " << map.size() << ", max_size: " << map.max_size() << std::endl;
   std::cout << name << " empty() (1: true 0: false): " << map.empty() << std::endl;
   std::cout << std::endl;
 }
-
-void print_size(std::map<char, int> map, std::string name)
-{
-  std::cout << name << " size: " << map.size() << ", max_size: " << map.max_size() << std::endl;
-  std::cout << name << " empty() (1: true 0: false): " << map.empty() << std::endl;
-  std::cout << std::endl;
-} 
 
 void test_map(void)
 {
@@ -224,6 +208,23 @@ void test_map(void)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 	MAP e basicamente um container que tem a chave e o tamanho ( ft::map < chave, tamanho > map)
 	uso o iterator para poder navegar dentro desse map e encotrar o que solicito de acordo com as funções
@@ -250,11 +251,15 @@ void test_map(void)
   equal_range() em C++ STL – Retorna um iterador de pares. O par refere-se aos limites de um intervalo que 
       inclui todos os elementos do contêiner que possuem uma chave equivalente a k
 
-	iterator -	server para navegar em uma coleçao de dados , podemos dizer que um iterator
+	iterator -  Um iterador é um objeto (como um ponteiro) que aponta para um elemento dentro do contêiner.
+        Podemos usar iteradores para percorrer o conteúdo do contêiner. Eles podem ser visualizados como algo semelhante 
+        a um ponteiro apontando para algum local e podemos acessar o conteúdo desse local específico usando-os.	
+        server para navegar em uma coleçao de dados , podemos dizer que um iterator
 				vai apontar para um item dentro de um container ,
 
-	const_iterator - 
-
+	const_iterator - a diferença do const iterator como ja haviamos aprendido sobre const e que o 
+        const_iterator não pode ser alterado, ele e usado apenas para acesso e não pode ser usado
+        para ser modificado
 
   insert - e utilizada para inserir elementos de uma chave especifica no container 
             ex.:   insert < chave , elemento >

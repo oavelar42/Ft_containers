@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:11:56 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/13 23:02:09 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/14 23:02:31 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,7 @@ void print_vector(ft::vector<int> vector, std::string name)
   std::cout << std::endl;
 }
 
-void print_vector(std::vector<int> vector, std::string name)
-{
-  std::cout << name << ": ";
-  for (std::vector<int>::iterator it = vector.begin(); it != vector.end(); it++)
-	  std::cout << *it << " ";
-  std::cout << std::endl;
-}
-
 void print_size(ft::vector<int> vector, std::string name)
-{
-  std::cout << name << " size: " << vector.size() << ", capacity: " << vector.capacity() << ", max_size: " << vector.max_size() << std::endl;
-  std::cout << name << " empty() (1: true 0:false): " << vector.empty() << std::endl;
-}
-
-void print_size(std::vector<int> vector, std::string name)
 {
   std::cout << name << " size: " << vector.size() << ", capacity: " << vector.capacity() << ", max_size: " << vector.max_size() << std::endl;
   std::cout << name << " empty() (1: true 0:false): " << vector.empty() << std::endl;
@@ -110,28 +96,6 @@ void test_vector(void)
 
 	print_title("VECTOR EMPTY()");
 	print_size(ft_vector, "ft_vector");
-
-
-	/*print_title("VECTOR RESERVE(max_size)");
-	try
-	{
-		ft_vector.reserve(ft_vector.max_size());
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-
-
-	print_title("VECTOR RESERVE(max_size + 1)");
-	try
-	{
-		ft_vector.reserve(ft_vector.max_size() + 1);
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Error : Exceeds supported size." << std::endl;
-	}*/
 	
 	std::cout << std::endl;
 
@@ -287,7 +251,7 @@ void test_vector(void)
 	crbegin() – Retorna um iterador reverso constante apontando para o último elemento no vetor (início reverso). Ele se move do último para o primeiro elemento
 	crend() – Retorna um iterador reverso constante apontando para o elemento teórico que precede o primeiro elemento no vetor (considerado como final reverso)
 
-
+	fill() - A função 'fill' atribui o valor 'val' a todos os elementos no intervalo [begin, end), onde 'begin' é a posição inicial e 'end' é a última posição.
 	resize(n) – Redimensiona o contêiner para que contenha 'n' elementos.
 	reserve() – Solicita que a capacidade do vetor seja pelo menos suficiente para conter n elementos.
 

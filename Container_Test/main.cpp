@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/10 13:51:48 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/14 23:00:12 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,8 @@ void print_title(std::string title, std::string subtitle)
 
 void print_header(std::string container_name)
 {
-	std::string header = RED + container_name + " TESTS:" + OFF + " press enter to continue\n";
-	int width = 100 - (header.length() / 2);
-
-	std::cout << '/' << std::setfill('*') << std::setw(100) << "/\n" << std::setfill(' ') << std::endl;
-	std::cout << std::setw(width) << header << std::endl;
-	std::cout << '/' << std::setfill('*') << std::setw(100) << "/\n" << std::setfill(' ') << std::endl;
-
+	std::cout << std::endl;
+	std::cout << RED << container_name << " TESTS:" << " press enter to continue" OFF << std::endl;
 }
 
 int main()
