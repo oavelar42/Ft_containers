@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/14 21:34:40 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/17 10:36:34 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void test_map(void)
 {
 	int start = clock();
 	
-  std::cout << "\n";
   print_title("CONSTRUCTOR", "ft::map");
 
   ft::map<char, int> ft_map;
@@ -41,7 +40,7 @@ void test_map(void)
   char c = 'a';
   for (int i = 1; i <= 13; i++, c++)
   {
-	ft_map[c] = i;
+	  ft_map[c] = i;
   }
   print_map(ft_map, "ft_map");
   print_size(ft_map, "ft_map");
@@ -51,11 +50,13 @@ void test_map(void)
   print_size(ft_map_range, "ft_map_range");
   print_map(ft_map_range, "ft_map_range");
 
+//É chamado quando um novo objeto é criado a partir de um objeto existente, como uma cópia do objeto existente
   print_title("COPY CONSTRUCTOR (copy of range)", "ft::map");
   ft::map<char, int> ft_map_copy(ft_map_range);
   print_size(ft_map_copy, "ft_map_copy");
   print_map(ft_map_copy, "ft_map_copy");
 
+//Este operador é chamado quando um objeto já inicializado recebe um novo valor de outro objeto existente.
 	print_title("ASSIGNATION OPERATOR", "ft::map");
   ft::map<char, int> ft_map_assignation;
   ft_map_assignation = ft_map_copy;
@@ -151,6 +152,9 @@ void test_map(void)
   print_title("AFTER");
   print_map(ft_map_copy, "ft_map_copy");
   print_size(ft_map_copy, "ft_map_copy");
+
+  print_title("My ft_map still has elements from 1 to 26...");
+  print_map(ft_map, "ft_map");
 
   print_title("MAP FIND(key) const and non_const");
   ft::map<char, int>::iterator find_a = ft_map.find('a');
@@ -266,5 +270,6 @@ void test_map(void)
 
   pair - usada para combinar 2 valores que podem ser de tipos de diferentes 
           ex.: pair < int , char >
+  make_pair - Esta função de template permite criar um par de valores sem escrever os tipos explicitamente. 
 
 */

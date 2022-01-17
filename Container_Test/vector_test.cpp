@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:11:56 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/14 23:02:31 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/17 14:27:59 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void print_vector(ft::vector<int> vector, std::string name)
 void print_size(ft::vector<int> vector, std::string name)
 {
   std::cout << name << " size: " << vector.size() << ", capacity: " << vector.capacity() << ", max_size: " << vector.max_size() << std::endl;
-  std::cout << name << " empty() (1: true 0:false): " << vector.empty() << std::endl;
+  std::cout << name << " empty() (1: true 0: false): " << vector.empty() << std::endl;
 }
 
 void test_vector(void)
@@ -111,17 +111,18 @@ void test_vector(void)
 	std::cout << std::endl;
 
 	print_title("VECTOR AT()");
-	try
+
+	
+	ft::vector<int> vec;
+	for (int i = 0; i <= 10; i++)
 	{
-		std::cout << "ft_vector : ";
-		for (size_t i = 0; i < ft_vector.size() + 1; i++)
-			std::cout << ft_vector.at(i) << " ";
-		std::cout << std::endl;
+		vec.push_back(i);
 	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	print_vector(vec, "ft_vector ");
+
+	std::cout << vec.at(2) << std::endl;
+	vec.at(2) = 42;
+	std::cout << vec.at(2) << std::endl;
 	std::cout << std::endl;
 
 	print_title("VECTOR FRONT()");
@@ -251,7 +252,8 @@ void test_vector(void)
 	crbegin() – Retorna um iterador reverso constante apontando para o último elemento no vetor (início reverso). Ele se move do último para o primeiro elemento
 	crend() – Retorna um iterador reverso constante apontando para o elemento teórico que precede o primeiro elemento no vetor (considerado como final reverso)
 
-	fill() - A função 'fill' atribui o valor 'val' a todos os elementos no intervalo [begin, end), onde 'begin' é a posição inicial e 'end' é a última posição.
+	fill consntruc - A função 'fill' atribui o valor 'val' a todos os elementos no intervalo [begin, end),
+			Porque o construtor só aloca a memória exata necessária
 	resize(n) – Redimensiona o contêiner para que contenha 'n' elementos.
 	reserve() – Solicita que a capacidade do vetor seja pelo menos suficiente para conter n elementos.
 

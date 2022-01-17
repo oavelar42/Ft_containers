@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 13:53:53 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/14 22:29:44 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/17 12:30:16 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void test_stack()
 	std::cout << std::endl;
 
 	std::cout << YELLOW << "EMPTY:" << OFF << std::endl;
-	std::cout << "ft_stack empty() (1/true if empty 0/false if not): " << ft_stack.empty() << std::endl;
+	std::cout << "ft_stack empty() (1: true  0: false): " << ft_stack.empty() << std::endl;
 
 	std::cout << std::endl;
 
@@ -46,7 +46,7 @@ void test_stack()
 	std::cout << std::endl;
 
 	std::cout << YELLOW << "EMPTY:" << OFF << std::endl;
-	std::cout << "ft_stack empty() (1=true if empty 0=false if not): " << ft_stack.empty() << std::endl;
+	std::cout << "ft_stack empty() (1: true  0: false): " << ft_stack.empty() << std::endl;
 	(
 	std::cout) << std::endl;
 
@@ -92,11 +92,16 @@ void test_stack()
 
 
 /* TEST for Stack:
-	Constructors
-		default, fill, range, copy, assignation operator
-	Accessors, iterators, getters, setters:
-		iterator, const_iterator, reverse_iterator, const_reverse_iterator, begin, end, rbegin, rend
-		size, max_size, resize, capacity, empty, reserve
-		operator[], at, front, back
-		assign, push_back, pop_back, insert, erase, swap, clear
+	 
+	 STACK = As pilhas são um tipo de adaptador de contêiner com o tipo de funcionamento LIFO (Last In First Out), 
+	 	onde um novo elemento é adicionado em uma extremidade (topo) e um elemento é removido apenas dessa extremidade. 
+
+	As funções associadas à pilha são: 
+
+	empty() – Retorna se a pilha está vazia .
+	size() – Retorna o tamanho da pilha.
+	top() – Retorna uma referência para o elemento mais alto da pilha.
+	push(g) – Adiciona o elemento 'g' no topo da pilha.
+	pop() – Exclui o elemento mais alto da pilha.
+
 */
