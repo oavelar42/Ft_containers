@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 13:53:53 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/17 12:30:16 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/19 19:38:36 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void test_stack()
 {
-	
-	int start = clock();
+	std::cout << std::endl;
 	 std::cout << YELLOW << "DEFAULT CONSTRUCTOR:" << OFF << " ft::stack"<< std::endl;
-	/*ft::stack<int> ft_stack;
+	ft::stack<int> ft_stack;
 
 	std::cout << std::endl;
 
@@ -77,13 +76,6 @@ void test_stack()
 	std::cout << "(ft_stack > ft_stack_copy) : " << (ft_stack > ft_stack_copy) << std::endl;
 	std::cout << "(ft_stack >= ft_stack_copy) : " << (ft_stack >= ft_stack_copy) << std::endl;
 	std::cout << std::endl;
-	*/
-		
-	int end = clock();
-	std::cout << "Execution time (stack): " << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
-	
-
-
 }
 
 

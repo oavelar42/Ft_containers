@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:39:48 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/14 23:01:36 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/19 19:56:23 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,17 @@
 # include <utility>
 # include "map_class.hpp"
 
+
 namespace ft
 {
 	template< class Key, class T, class Compare, class Alloc >
-	map< Key, T, Compare, Alloc >::map(const key_compare& comp, const allocator_type& alloc) : _alloc(alloc), _size(0), _max_size(0), _comp(comp), _root(NULL), _sentinel(NULL), _GreatestData(NULL)
-	{
-	}
+	map< Key, T, Compare, Alloc >::map(const key_compare& comp, const allocator_type& alloc) 
+		: _alloc(alloc), _size(0), _max_size(0), _comp(comp), _root(NULL), _sentinel(NULL), _GreatestData(NULL)  {  }
 
 	template< class Key, class T, class Compare, class Alloc >
 	template <class InputIterator>
-	map< Key, T, Compare, Alloc >::map(InputIterator first, InputIterator last, const key_compare& comp, const allocator_type& alloc) :  _alloc(alloc), _size(0), _max_size(0), _comp(comp), _root(NULL), _sentinel(NULL), _GreatestData(NULL)
+	map< Key, T, Compare, Alloc >::map(InputIterator first, InputIterator last, const key_compare& comp, const allocator_type& alloc) 
+		:  _alloc(alloc), _size(0), _max_size(0), _comp(comp), _root(NULL), _sentinel(NULL), _GreatestData(NULL)
 	{
 		insert(first, last);
 		return;
@@ -448,98 +449,98 @@ namespace ft
 		return _alloc;
 	}
 
-	/*  Funções específicas de buscar , inserir, construir */
+	/*  Funções específicas binaria, < binary search > inserir */
 	template< class Key, class T, class Compare, class Alloc >
-	typename map<Key, T, Compare, Alloc >::node_ptr map< Key, T, Compare, Alloc >::newNode(value_type &data)
-	{
-		node_ptr node = _node_alloc.allocate(1);
-		_alloc.construct(&node->data, data);
-		node->right = NULL;
-		node->left = NULL;
-		node->parent = NULL;
-		return node;
-	}
+    typename map<Key, T, Compare, Alloc >::node_ptr map< Key, T, Compare, Alloc >::newNode(value_type &data)
+    {
+        node_ptr node = _node_alloc.allocate(1);
+        _alloc.construct(&node->data, data);
+        node->right = NULL;
+        node->left = NULL;
+        node->parent = NULL;
+        return node;
+    }
 
-	template< class Key, class T, class Compare, class Alloc >
-	typename map< Key, T, Compare, Alloc >::node_ptr map< Key, T, Compare, Alloc >::insertNode(node_ptr node, value_type data)
-	{
-		if (!node || node == _sentinel)
-		{
-			node = newNode(data);
-			if (node == _sentinel)
-			{
-				_GreatestData = node;
-				_GreatestData->right = _sentinel;
-				_GreatestData->left = NULL;
-				_sentinel->parent = _GreatestData;
-				_sentinel->right = NULL;
-				_sentinel->left = NULL;
-			}
-			_size++;
-		}
-		else if (key_comp()(data.first, node->data.first))
-		{
-			node->left = insertNode(node->left, data);
-			node->left->parent = node;
-		}
-		else if (key_comp()(node->data.first, data.first))
-		{
-			node->right = insertNode(node->right, data);
-			node->right->parent = node;
-		}
-		if (!_root)
-			_root = node;
-		if (!_sentinel || key_comp()(_GreatestData->data.first, data.first))
-		{
-			if (!_sentinel)
-				_sentinel = _node_alloc.allocate(1);
-			_GreatestData = max_node(_root);
-			_GreatestData->right = _sentinel;
-			_GreatestData->left = NULL;
-			_sentinel->right = NULL;
-			_sentinel->left = NULL;
-			_sentinel->parent = _GreatestData;
-		}
-		return node;
-	}
+    template< class Key, class T, class Compare, class Alloc >
+    typename map< Key, T, Compare, Alloc >::node_ptr map< Key, T, Compare, Alloc >::insertNode(node_ptr node, value_type data)
+    {
+        if (!node || node == _sentinel)
+        {
+            node = newNode(data);
+            if (node == _sentinel)
+            {
+                _GreatestData = node;
+                _GreatestData->right = _sentinel;
+                _GreatestData->left = NULL;
+                _sentinel->parent = _GreatestData;
+                _sentinel->right = NULL;
+                _sentinel->left = NULL;
+            }
+            _size++;
+        }
+        else if (key_comp()(data.first, node->data.first))
+        {
+            node->left = insertNode(node->left, data);
+            node->left->parent = node;
+        }
+        else if (key_comp()(node->data.first, data.first))
+        {
+            node->right = insertNode(node->right, data);
+            node->right->parent = node;
+        }
+        if (!_root)
+            _root = node;
+        if (!_sentinel || key_comp()(_GreatestData->data.first, data.first))
+        {
+            if (!_sentinel)
+                _sentinel = _node_alloc.allocate(1);
+            _GreatestData = max_node(_root);
+            _GreatestData->right = _sentinel;
+            _GreatestData->left = NULL;
+            _sentinel->right = NULL;
+            _sentinel->left = NULL;
+            _sentinel->parent = _GreatestData;
+        }
+        return node;
+    }
 
-	template< class Key, class T, class Compare, class Alloc >
-	typename map< Key, T, Compare, Alloc >::node_ptr map< Key, T, Compare, Alloc >::delete_node(node_ptr node, value_type data)
-	{
-		if (node == NULL)
-			return node;
-		if (key_comp()(node->data.first, data.first))
-			node->right = delete_node(node->right, data);
-		else if (key_comp()(data.first, node->data.first))
-			node->left = delete_node(node->left, data);
-		else
-		{
-			if (node->left == NULL && node->right == NULL)
-			{
-				_alloc.destroy(&node->data);
-				return NULL;
-			}
-			if (node->left == NULL)
-			{
-				node_ptr tmp = node->right;
-				tmp->parent = node->parent;
-				_alloc.destroy(&node->data);
-				return tmp;
-			}
-			else if (node->right == NULL || node->right == _sentinel)
-			{
-				node_ptr tmp = node->left;
-				tmp->parent = node->parent;
-				_alloc.destroy(&node->data);
-				return tmp;
-			}
-			node_ptr tmp = min_node(node->right);
-			_alloc.destroy(&node->data);
-			_alloc.construct(&node->data, tmp->data);
-			node->right = delete_node(node->right, tmp->data);
-		}
-		return node;
-	}
+    template< class Key, class T, class Compare, class Alloc >
+    typename map< Key, T, Compare, Alloc >::node_ptr map< Key, T, Compare, Alloc >::delete_node(node_ptr node, value_type data)
+    {
+        if (node == NULL)
+            return node;
+        if (key_comp()(node->data.first, data.first))
+            node->right = delete_node(node->right, data);
+        else if (key_comp()(data.first, node->data.first))
+            node->left = delete_node(node->left, data);
+        else
+        {
+            if (node->left == NULL && node->right == NULL)
+            {
+                _alloc.destroy(&node->data);
+                return NULL;
+            }
+            if (node->left == NULL)
+            {
+                node_ptr tmp = node->right;
+                tmp->parent = node->parent;
+                _alloc.destroy(&node->data);
+                return tmp;
+            }
+            else if (node->right == NULL || node->right == _sentinel)
+            {
+                node_ptr tmp = node->left;
+                tmp->parent = node->parent;
+                _alloc.destroy(&node->data);
+                return tmp;
+            }
+            node_ptr tmp = min_node(node->right);
+            _alloc.destroy(&node->data);
+            _alloc.construct(&node->data, tmp->data);
+            node->right = delete_node(node->right, tmp->data);
+        }
+        return node;
+    }
 }
 
 #endif

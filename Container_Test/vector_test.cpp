@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:11:56 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/17 14:27:59 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/19 19:38:22 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void print_size(ft::vector<int> vector, std::string name)
 
 void test_vector(void)
 {
-	int start = clock();
 	print_title("DEFAULT CONSTRUCTOR", "ft::vector");
 	ft::vector<int> ft_vector;
 	print_size(ft_vector, "ft_vector");
@@ -225,8 +224,6 @@ void test_vector(void)
 	print_size(ft_vector_range, "ft_vector_range after(clear)");
 
 	std::cout << "\n";
-	int end = clock();
-	std::cout << RED "Execution time (map): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
 	std::cout << "\n";
 }
 

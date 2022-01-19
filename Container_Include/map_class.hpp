@@ -6,12 +6,13 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:19:19 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/14 23:01:45 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/19 21:07:06 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef  MAP_CLASS_HPP
 # define MAP_CLASS_HPP
+
 # include <memory>
 # include <utility>
 # include <cstddef>
@@ -54,51 +55,51 @@ namespace ft
 		pair(void) : first(), second() { return; };
 		template<class U, class V>
 			pair(const pair<U,V>& pr) : first(pr.first), second(pr.second) { return; };
-		pair(const first_type& a, const second_type& b) : first(a), second(b) { return; };
-		pair& operator=(const pair& pr) { first = pr.first; second = pr.second; return *this; };
+			pair(const first_type& a, const second_type& b) : first(a), second(b) { return; };
+			pair& operator=(const pair& pr) { first = pr.first; second = pr.second; return *this; };
 	};
 
 	 /*  Operadores de comparação   */
 	template <class T1, class T2>
-	bool operator==(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs) 
+	bool operator==(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs) 
 	{ 
 		return (lhs.first == rhs.first && lhs.second == rhs.second);
 	};
 
 	template <class T1, class T2>
-	bool operator!=(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs) 
+	bool operator!=(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs) 
 	{
 		return (lhs.first == rhs.first && lhs.second == rhs.second);
 	};
 
 	template <class T1, class T2>
-	bool operator<(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
+	bool operator<(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs)
 	{
 		return (lhs.first < rhs.first && lhs.second < rhs.second);
 	};
 
 	template <class T1, class T2>
-	bool operator<=(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
+	bool operator<=(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs)
 	{
 		return (lhs.first <= rhs.first && lhs.second <= rhs.second);
 	};
 
 	template <class T1, class T2>
-	bool operator>(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs) 
+	bool operator>(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs) 
 	{
 		return (lhs.first > rhs.first && lhs.second > rhs.second);
 	};
 
 	template <class T1, class T2>
-	bool operator>=(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs) 
+	bool operator>=(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs) 
 	{
 		return (lhs.first >= rhs.first && lhs.second >= rhs.second); 
 	};
 
 	template <class T1,class T2>
-	pair<T1,T2> make_pair (T1 x, T2 y) 
+	ft::pair<T1,T2> make_pair (T1 x, T2 y) 
 	{
-		return (pair<T1,T2>(x,y) );
+		return (ft::pair<T1,T2>(x,y) );
 	};
 
 	template< class T1, class T2 >
@@ -123,9 +124,9 @@ namespace ft
 			/*     Member types     */
 			/************************/
 
-			typedef Key                                                         key_type;
+			typedef Key                                                         key_type;                         // 
 			typedef T                                                           mapped_type;
-			typedef pair<const key_type, mapped_type>			                value_type;
+			typedef ft::pair<const key_type, mapped_type>			            value_type;
 			typedef Compare                                                     key_compare;
 			typedef Alloc                                                       allocator_type;
 			typedef typename allocator_type::reference                          reference;
@@ -147,7 +148,7 @@ namespace ft
 			typedef ft::reverse_iterator<iterator>              reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>        const_reverse_iterator;
 
-			/*  retorno um objeto de comparação , para isso uso a struct less */
+			/*  Classe de função para comparar elementos  */
 			class value_compare
 			{
 				friend class map;
@@ -263,6 +264,7 @@ namespace ft
 				allocator_type get_allocator() const;
 
 		private:
+				/*  Funções específicas binary search tree*/
 				node_ptr newNode(value_type &data);
 				node_ptr insertNode(node_ptr node, value_type data);
 				node_ptr delete_node(node_ptr node, value_type data);
