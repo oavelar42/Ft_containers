@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/19 19:37:46 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/20 17:10:57 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main()
 	test_stack();
 
 	int end = clock();
-	std::cout << RED "Execution time (stack): " << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
+	std::cout << RED "Execution time (stack): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
 	system("leaks identify | grep bytes");
 
 	return 0;

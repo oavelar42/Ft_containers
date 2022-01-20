@@ -6,11 +6,10 @@
 #    By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 16:24:00 by oavelar           #+#    #+#              #
-#    Updated: 2022/01/19 16:46:53 by oavelar          ###   ########.fr        #
+#    Updated: 2022/01/20 17:09:26 by oavelar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#SHELL 			= /bin/bash
 NAME_FT 		= ft_containers
 NAME_STD		= std_containers
 RM				= rm -rf
@@ -21,7 +20,8 @@ else
  CC = clang++
 endif
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++98
+LEAK = -fsanitize=address
 
 INCS_DIR	= Container_Include
 MAIN_INC	= -I$(INCS_DIR)
@@ -52,7 +52,7 @@ $(NAME_FT)		: $(OBJS)
 			@echo "Compilation of $(MAG)$(NAME_FT): $(OFF) $(OK)$(OFF)"
 
 $(NAME_STD)		:	$(OBJ_STD)
-			@$(CC) $(FLAGS) $(OBJ_STD) -o $(NAME_STD)
+			@$(CC) $(FLAGS) $(LEAK) $(OBJ_STD) -o $(NAME_STD)
 			@echo "Compilation of $(MAG)$(NAME_STD): $(OFF) $(OK)$(OFF)"
 
 clean		:

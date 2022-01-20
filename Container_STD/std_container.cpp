@@ -134,7 +134,7 @@ void test_map(void)
 	c = 'n';
 	for (int i = 0; i < 6; i++, c++)
 	{
-	std_map_copy.erase(c);
+		std_map_copy.erase(c);
 	}
 
 	print_map(std_map_copy, "std_map_copy");

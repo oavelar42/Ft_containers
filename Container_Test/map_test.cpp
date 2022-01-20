@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/19 22:33:23 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/20 19:14:08 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ void test_map(void)
 	print_map(ft_map_copy, "ft_map_copy");
 	print_size(ft_map_copy, "ft_map_copy");
 
-	print_title("MAP ERASE(position)", "erasing first half of map_copy");
 	ft::map<char, int>::iterator ft_it_half = ft_map_copy.find('n');
 	for (ft::map<char, int>::iterator it = ft_map_copy.begin(); it != ft_it_half; it++)
 	ft_map_copy.erase(it);
