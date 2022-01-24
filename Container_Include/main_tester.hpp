@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 22:35:58 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/19 19:12:16 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/21 20:50:35 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <string>
 # include <iostream>
 # include <iomanip>
+# include <iterator>
 # include <memory>
 # include <cstddef>
 # include <limits>
