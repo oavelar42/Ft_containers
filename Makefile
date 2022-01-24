@@ -6,7 +6,11 @@
 #    By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 16:24:00 by oavelar           #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/01/22 12:01:04 by oavelar          ###   ########.fr        #
+=======
+#    Updated: 2022/01/24 11:48:28 by oavelar          ###   ########.fr        #
+>>>>>>> 986d50c087caf9671dc093006befd0d87d867b28
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +24,7 @@ else
  CC = clang++
 endif
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
-LEAK = -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 INCS_DIR	= Container_Include
 MAIN_INC	= -I$(INCS_DIR)
@@ -52,7 +55,7 @@ $(NAME_FT)		: $(OBJS)
 			@echo "Compilation of $(MAG)$(NAME_FT): $(OFF) $(OK)$(OFF)"
 
 $(NAME_STD)		:	$(OBJ_STD)
-			@$(CC) $(FLAGS) $(LEAK) $(OBJ_STD) -o $(NAME_STD)
+			@$(CC) $(FLAGS) $(OBJ_STD) -o $(NAME_STD)
 			@echo "Compilation of $(MAG)$(NAME_STD): $(OFF) $(OK)$(OFF)"
 
 clean		:

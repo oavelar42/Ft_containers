@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 13:53:50 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/19 19:22:34 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/24 13:52:51 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 namespace ft
 {
     template < class T, class Container >
-    stack<T, Container>::stack(const container_type& ctnr) : _ctnr(ctnr) {}
+    stack<T, Container>::stack(const container_type& ctnr) : c(ctnr) {}
 
     template < class T, class Container >
     stack<T, Container>::~stack()
@@ -29,37 +29,37 @@ namespace ft
     template < class T, class Container >
     bool stack<T, Container>::empty() const
     {
-        return _ctnr.empty();
+        return c.empty();
     }
 
     template < class T, class Container >
     typename stack<T, Container>::size_type stack<T, Container>::size() const
     {
-        return _ctnr.size();
+        return c.size();
     }
 
     template < class T, class Container >
     typename stack<T, Container>::value_type& stack<T, Container>::top()
     {
-        return _ctnr.back();
+        return c.back();
     }
 
     template < class T, class Container >
     const typename stack<T, Container>::value_type&  stack<T, Container>::top() const
     {
-        return _ctnr.back();
+        return c.back();
     }
 
     template < class T, class Container >
     void stack<T, Container>::push(const value_type& val)
     {
-        return _ctnr.push_back(val);
+        return c.push_back(val);
     }
 
     template <class T, class Container >
     void stack<T, Container>::pop()
     {
-        return _ctnr.pop_back();
+        return c.pop_back();
     }
 
     template <class T, class Container>

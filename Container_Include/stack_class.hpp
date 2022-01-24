@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 13:54:12 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/19 19:25:10 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/24 13:50:59 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ namespace ft
             void                push (const value_type& val);
             void                pop();
 
-            friend bool operator==(const stack<T,Container>& lhs, const stack<T,Container>& rhs) { return lhs._ctnr == rhs._ctnr; };
-            friend bool operator<(const stack<T,Container>& lhs, const stack<T,Container>& rhs) { return lhs._ctnr < rhs._ctnr; };
+            friend bool operator==(const stack<T,Container>& lhs, const stack<T,Container>& rhs) { return lhs.c == rhs.c; };
+            friend bool operator<(const stack<T,Container>& lhs, const stack<T,Container>& rhs) { return lhs.c < rhs.c; };
         
         protected:
-            container_type      _ctnr;
+            container_type      c;
     };
 
       ////////////////////////////////////////
