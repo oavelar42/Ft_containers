@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 22:35:58 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/19 19:12:16 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/24 12:18:53 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void print_title(std::string title, std::string subtitle = "");
 void test_map();
 void test_vector();
 void test_stack();
+int test_subject(int argc, char** argv);
 
 #endif

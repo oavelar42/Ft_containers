@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/20 17:10:57 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/24 14:00:41 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void print_header(std::string container_name)
 
 int main()
 {
-	int start = clock();
+	//int start = clock();
 
 	print_header("MAP");
 	while (std::cin.get() != '\n') {}
@@ -43,9 +43,15 @@ int main()
 	while (std::cin.get() != '\n') {}
 	test_stack();
 
-	int end = clock();
-	std::cout << RED "Execution time (stack): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
-	system("leaks identify | grep bytes");
+	//print_header("TEST SUBJECT");
+	while (std::cin.get() != '\n') {
+		int test_subject(int argc, char** argv);
+	}
+	//int test_subject(int argc, char** argv);
+
+	//int end = clock();
+	//std::cout << RED "Execution time (stack): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
+	//system("leaks identify | grep bytes");
 
 	return 0;
 }
