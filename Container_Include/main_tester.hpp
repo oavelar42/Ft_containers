@@ -6,11 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 22:35:58 by oavelar           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/01/21 20:50:35 by oavelar          ###   ########.fr       */
-=======
-/*   Updated: 2022/01/24 12:18:53 by oavelar          ###   ########.fr       */
->>>>>>> 986d50c087caf9671dc093006befd0d87d867b28
+/*   Updated: 2022/01/25 14:29:22 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +22,6 @@
 # include <string>
 # include <iostream>
 # include <iomanip>
-# include <iterator>
 # include <memory>
 # include <cstddef>
 # include <limits>
@@ -53,6 +48,6 @@ void print_title(std::string title, std::string subtitle = "");
 void test_map();
 void test_vector();
 void test_stack();
-int test_subject(int argc, char** argv);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/24 13:59:41 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/25 14:56:11 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 #endif
 
 #include <stdlib.h>
-#include "main_tester.hpp"
 
 #define MAX_RAM 4294967296
 #define BUFFER_SIZE 4096
@@ -55,15 +54,17 @@ public:
 	iterator end() { return this->c.end(); }
 };
 
-int test_subject(int argc, char** argv) 
+
+int main(int argc, char **argv) 
 {
-	if (argc != 1)
+	if (argc != 2)
 	{
-		std::cerr << "Usage: ./test seed" << std::endl;
+		std::cerr << "Usage: ./subj_test seed" << std::endl;
 		std::cerr << "Provide a seed please" << std::endl;
-		std::cerr << "Count value:" << COUNT << std::endl;
+		std::cerr << "Count value : " << COUNT << std::endl;
 		return 1;
 	}
+
 	const int seed = atoi(argv[1]);
 	srand(seed);
 
@@ -124,5 +125,4 @@ int test_subject(int argc, char** argv)
 		std::cout << *it;
 	}
 	std::cout << std::endl;
-	return (0);
 }

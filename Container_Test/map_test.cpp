@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/20 19:14:08 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/25 14:31:46 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void print_size(ft::map<char, int> map, std::string name)
 
 void test_map(void)
 {
+	int start = clock();
+
 	print_title("CONSTRUCTOR", "ft::map");
 
 	ft::map<char, int> ft_map;
@@ -204,6 +206,9 @@ void test_map(void)
 	ft_map.erase(ft_map.begin(), ft_map.end());
 	print_map(ft_map, "ft_map");
 	print_size(ft_map, "ft_map");
+
+	int end = clock();
+	std::cout << RED "Execution time (map): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
 	
 	std::cout << "\n";
 	std::cout << "\n";
