@@ -6,14 +6,14 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:34:57 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/19 19:54:47 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/29 16:26:21 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_REV_ITER_HPP
 # define MAP_REV_ITER_HPP
 
-//# include "map_class.hpp"
+# include "map_class.hpp"
 
 namespace ft
 {
@@ -145,7 +145,10 @@ namespace ft
 				/* Copy , estou iniciando const_rev_iter com parametro em rever_iter */
 				template < class Iter >
 					reverse_iterator(const reverse_iterator<Iter>& rev_it) : _base(rev_it.base()) {} 
-			   
+			    
+				/* Destructor */
+				virtual ~reverse_iterator() {}
+				
 				/***************************************************************************/
 			   /*** operator= --------------------------------------------------------- ***/
 			   
@@ -221,8 +224,12 @@ namespace ft
 			return lhs.base() - rhs.base();
 		}
 
-	/*  Class random para acesso iter     */
-   /*      todas as calculos necessarios */
+	/*  Class random para acesso iter  
+ 			Os iteradores de acesso aleatório permitem o acesso a elementos a um
+ 		posição de compensação arbitrária em relação ao elemento que apontam
+   		para. Estes são os iteradores mais completos. Todos os tipos de apontadores
+  		são também leitores de acesso aleatório válidos.
+    */
 	template < class T >
 	class RandAccess
 	{
@@ -230,14 +237,20 @@ namespace ft
 			T          *_val;
 
 		public:
-			typedef T&          reference;
-			typedef T*          pointer;
-			typedef ptrdiff_t   difference_type;
+			typedef T&          reference;				// Tipo para representar um referencia para um elemento apontado. 
+			typedef T*          pointer;				// Tipo para representar um ponteiro para um elemento apontado. 
+			typedef ptrdiff_t   difference_type;		// Tipo para representar a diferença entre dois iteradores.
 
+			//Construtor
 			RandAccess() : _val(NULL) {}
+			
 			RandAccess(T *src) : _val(src) {}
+
 			RandAccess(RandAccess const& src) : _val(NULL) { *this = src; }
+			
+			// destructor
 			virtual ~RandAccess() {}
+			
 			RandAccess& operator=(RandAccess const& rhs) {
 				if (this != &rhs)
 					_val = rhs._val;
@@ -257,12 +270,11 @@ namespace ft
 			RandAccess<T>   operator--(int) { RandAccess<T> tmp(*this); _val--; return tmp; }
 			RandAccess<T>   operator+(difference_type n) const { return RandAccess(_val + n); }
 			friend RandAccess<T>    operator+(difference_type n, RandAccess const& rhs) { return rhs.operator+(n); }
-
+			
 			RandAccess<T>   operator-(difference_type n) const { return RandAccess(_val - n); }
 			difference_type operator-(RandAccess const& n) const { return _val - n._val; }
 			RandAccess<T>&  operator+=(difference_type n) { _val += n; return *this; }
 			RandAccess<T>&  operator-=(difference_type n) { _val -= n; return *this; }
-
 			pointer         operator->() const { return _val; }
 			reference       operator*() const { return *_val; }
 			reference       operator[](difference_type n) const { return _val[n]; }

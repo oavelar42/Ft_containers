@@ -44,7 +44,9 @@ void print_size(std::map<char, int> map, std::string name)
 
 void test_map(void)
 {
- print_title("CONSTRUCTOR", "std::map");
+	int start = clock();
+
+ 	print_title("CONSTRUCTOR", "std::map");
 	std::map<char, int> std_map;
 	print_size(std_map, "std_map");
 
@@ -209,6 +211,10 @@ void test_map(void)
 	std::cout << it->first << " => " << it->second << '\n';
 	it++;
 	}
+
+	std::cout << std::endl;
+	int end = clock();
+	std::cout << "Execution time (map): " << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << "---------------------------------------------------------------------";
@@ -237,6 +243,7 @@ void print_size(std::vector<int> vector, std::string name)
 
 void test_vector()
 {
+	int start = clock();
 	print_title("DEFAULT CONSTRUCTOR", "std::vector");
 	std::vector<int> std_vector;
 	print_size(std_vector, "std_vector");
@@ -431,6 +438,9 @@ void test_vector()
 	print_size(std_vector, "std_vector after(clear)");
 	print_size(std_vector_range, "std_vector_range after(clear)");
 
+	std::cout << std::endl;
+	int end = clock();
+	std::cout << "Execution time (vector): " << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
 
 	std::cout << std::endl;
 	std::cout << std::endl;
@@ -446,6 +456,8 @@ void test_vector()
 
 void test_stack()
 {
+	int start = clock();
+
 	std::cout << "DEFAULT CONSTRUCTOR:" << "std::stack"<< std::endl;
 	std::stack<int> std_stack;
 
@@ -507,6 +519,10 @@ void test_stack()
 	std::cout << "(std_stack <= std_stack_copy) : " << (std_stack <= std_stack_copy) << std::endl;
 	std::cout << "(std_stack > std_stack_copy) : " << (std_stack > std_stack_copy) << std::endl;
 	std::cout << "(std_stack >= std_stack_copy) : " << (std_stack >= std_stack_copy) << std::endl;
+
+	std::cout << std::endl;
+	int end = clock();
+	std::cout << "Execution time (stack): " << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
 
 	std::cout << std::endl;
 	std::cout << std::endl;

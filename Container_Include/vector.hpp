@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 22:12:02 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/14 23:02:41 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/30 17:15:28 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,9 +206,11 @@ namespace ft
 	 /***************************************************************************/
 	/*** constructors ------------------------------------------------------ ***/
 	
+	/* Default */
 	template < class T, class Alloc >
 	vector<T, Alloc>::vector(const allocator_type& alloc) : _data(NULL), _alloc(alloc), _size(0), _capacity(0) { }
 
+	/*  Fill  */
 	template < class T, class Alloc >
 	vector<T, Alloc>::vector(size_type n, const value_type& val, const allocator_type& alloc) : _alloc(alloc), _size(n), _capacity(n)
 	{
@@ -217,6 +219,7 @@ namespace ft
 			_alloc.construct(&_data[i], val);
 	}
 
+	/* Range */
 	template < class T, class Alloc >
 	template < class InputIterator >
 	vector<T, Alloc>::vector(typename ft::enable_if<!std::numeric_limits< InputIterator >::is_integer, InputIterator>::type first, InputIterator last, const allocator_type& alloc) : _alloc(alloc), _size(0), _capacity(0)
@@ -227,6 +230,7 @@ namespace ft
 			_alloc.construct(&_data[_size++], *first);
 	}
 
+	
 	template < class T, class Alloc >
 	vector<T, Alloc>::vector(vector const &src) : _data(NULL),  _alloc(allocator_type()), _size(0), _capacity(0) 
 	{

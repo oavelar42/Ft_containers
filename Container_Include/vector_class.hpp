@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:12:05 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/14 23:02:47 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/30 14:49:48 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,9 +134,11 @@ namespace ft
 				/* Fill */ 
 				explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type());
 				
-				/*  Copy  */
+				/*  Range  */
 				template <class InputIterator>
 					vector(typename ft::enable_if<!std::numeric_limits<InputIterator>::is_integer, InputIterator>::type first, InputIterator last, const allocator_type& alloc = allocator_type());
+				
+				/* Copy */
 				vector(const vector& x); 
 
 				 /***************************************************************************/

@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:19:19 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/20 22:27:49 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/25 19:30:51 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,12 +102,12 @@ namespace ft
 		return (ft::pair<T1,T2>(x,y) );
 	};
 
-	template< class T1, class T2 >
+	/*template< class T1, class T2 >
 	std::ostream & operator<<( std::ostream & flux, ft::pair<T1, T2> const & rhs)
 	{
 		flux << rhs.second << std::endl;
 		return flux;
-	}
+	}*/
 
 	/*********************/
 	/*                   */

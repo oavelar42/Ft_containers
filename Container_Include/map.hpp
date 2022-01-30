@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:39:48 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/20 22:27:07 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/01/25 21:39:01 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,19 @@
 
 namespace ft
 {
+	/****************************/
+	/*     Member functions     */
+	/****************************/
+
+	/***************************************************************************/
+	/*** constructors ------------------------------------------------------ ***/
+
+	/* Default */ 
 	template< class Key, class T, class Compare, class Alloc >
 	map< Key, T, Compare, Alloc >::map(const key_compare& comp, const allocator_type& alloc) 
 		: _alloc(alloc), _size(0), _max_size(0), _comp(comp), _root(NULL), _sentinel(NULL), _GreatestData(NULL)  {  }
 
+	/*  Range  */
 	template< class Key, class T, class Compare, class Alloc >
 	template <class InputIterator>
 	map< Key, T, Compare, Alloc >::map(InputIterator first, InputIterator last, const key_compare& comp, const allocator_type& alloc) 
@@ -36,21 +45,12 @@ namespace ft
 		return;
 	}
 
+	/*  Copy  */
 	template< class Key, class T, class Compare, class Alloc >
 	map<Key, T, Compare, Alloc>::map(map const &x) : _alloc(x._alloc), _size(x._size), _max_size(x._max_size),  _comp(x._comp), _node_alloc(x._node_alloc)
 	{
 		clear();
 		insert(x.begin(), x.end());
-	}
-
-	template <class Key, class T, class Compare, class Alloc >
-	map< Key, T, Compare, Alloc >::~map()
-	{
-		clear();
-		if (_root)
-			_node_alloc.deallocate(_root, _size);
-		if (_sentinel)
-			_node_alloc.deallocate(_sentinel, 1);
 	}
 
 	 /***************************************************************************/
@@ -73,6 +73,19 @@ namespace ft
 		}
 
 		return *this;
+	}
+
+	 /***************************************************************************/
+	/*** destructor -------------------------------------------------------- ***/
+
+	template <class Key, class T, class Compare, class Alloc >
+	map< Key, T, Compare, Alloc >::~map()
+	{
+		clear();
+		if (_root)
+			_node_alloc.deallocate(_root, _size);
+		if (_sentinel)
+			_node_alloc.deallocate(_sentinel, 1);
 	}
 
 	   ////////////////////////
