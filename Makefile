@@ -6,7 +6,7 @@
 #    By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 16:24:00 by oavelar           #+#    #+#              #
-#    Updated: 2022/01/29 21:44:38 by oavelar          ###   ########.fr        #
+#    Updated: 2022/02/10 16:38:02 by oavelar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ else
  CC = clang++
 endif
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g #-fsanitize=address
 
 INCS_DIR	= Container_Include
 MAIN_INC	= -I$(INCS_DIR)

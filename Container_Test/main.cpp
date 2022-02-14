@@ -6,11 +6,11 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:22:33 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/25 14:31:07 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/02/14 23:28:36 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main_tester.hpp"
+#include "../Container_Include/main_tester.hpp"
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
@@ -40,6 +40,7 @@ int main()
 	print_header("STACK");
 	while (std::cin.get() != '\n') {}
 	test_stack();
+
 	
 	//system("leaks identify | grep bytes");
 

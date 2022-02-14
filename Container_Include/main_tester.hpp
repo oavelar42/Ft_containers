@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 22:35:58 by oavelar           #+#    #+#             */
-/*   Updated: 2022/01/25 14:29:22 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/02/14 18:04:22 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,30 @@
 # include <cstddef>
 # include <limits>
 # include <utility>
+# include <iterator>
 # include <stack>
 # include <map>
 # include <vector>
+# include <set>
 # include <time.h>
 # include <functional>
 # include <utility>
 # include <stdlib.h>
 # include <string.h>
+# include <algorithm>
 
-#include "map.hpp"
-#include "map_class.hpp"
-#include "map_rev_iter.hpp"
-#include "vector.hpp"
-#include "vector_class.hpp"
+#include "iterators.hpp"
+#include "reverse_iter.hpp"
+#include "utils.hpp"
+#include "binary.hpp"
 #include "stack.hpp"
-#include "stack_class.hpp"
+#include "vector.hpp"
+#include "map.hpp"
 
 void print_header(std::string container_name);
 void print_title(std::string title, std::string subtitle = "");
 void test_map();
 void test_vector();
 void test_stack();
-
 
 #endif
