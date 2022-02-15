@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:11:56 by oavelar           #+#    #+#             */
-/*   Updated: 2022/02/14 23:28:21 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/02/15 17:00:19 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,32 +22,32 @@ void print_vector(ft::vector<int> vector, std::string name)
 
 void print_size(ft::vector<int> vector, std::string name)
 {
-  std::cout << name << " size: " << vector.size() << ", capacity: " << vector.capacity() << ", max_size: " << vector.max_size() << std::endl;
+  std::cout << name << " size: " << vector.size() << ", capacity: " << vector.capacity() << std::endl;
   std::cout << name << " empty() (1: true 0: false): " << vector.empty() << std::endl;
 }
 
 void contructors()
 {
-	print_title("DEFAULT CONSTRUCTOR", "ft::vector");
-	ft::vector<int> ft_vector;
-	print_size(ft_vector, "ft_vector");
+	print_title("DEFAULT CONSTRUCTOR", "vector");
+	ft::vector<int> vector;
+	print_size(vector, "vector");
 
-	print_title("FILL CONSTRUCTOR", "ft::vector");
-	ft::vector<int> ft_vector_fill(10, 42);
-	print_size(ft_vector_fill, "ft_vector_fill");
-	print_vector(ft_vector_fill, "ft_vector_fill");
+	print_title("FILL CONSTRUCTOR", "vector");
+	ft::vector<int> vector_fill(10, 42);
+	print_size(vector_fill, "vector_fill");
+	print_vector(vector_fill, "vector_fill");
 
-	print_title("RANGE CONSTRUCTOR", "ft::vector");
-	ft::vector<int> ft_vector_range(ft_vector_fill.begin(), ft_vector_fill.end());
-	print_size(ft_vector_range, "ft_vector_range");
-	print_vector(ft_vector_range, "ft_vector_range");
+	print_title("RANGE CONSTRUCTOR", "vector");
+	ft::vector<int> vector_range(vector_fill.begin(), vector_fill.end());
+	print_size(vector_range, "vector_range");
+	print_vector(vector_range, "vector_range");
 
-	print_title("COPY CONSTRUCTOR (copy of range)", "ft::vector");
-	ft::vector<int> ft_vector_copy(ft_vector_range);
-	print_size(ft_vector_copy, "ft_vector_copy");
-	print_vector(ft_vector_copy, "ft_vector_copy");
+	print_title("COPY CONSTRUCTOR (copy of range)", "vector");
+	ft::vector<int> vector_copy(vector_range);
+	print_size(vector_copy, "vector_copy");
+	print_vector(vector_copy, "vector_copy");
 
-	print_title("COPY CONSTRUCTOR WITH STRING", "ft::vector");
+	print_title("COPY CONSTRUCTOR WITH STRING", "vector");
 	std::vector<std::string> cop(5, "yo");
 	std::vector<std::string> copy(cop);
 	std::vector<std::string>::iterator copyIt = copy.begin();
@@ -56,13 +56,13 @@ void contructors()
 		std::cout << LET << *copyIt++ << ' ';
 	std::cout << std::endl;
 
-	print_title("ASSIGNATION OPERATOR", "ft::vector");
-	ft::vector<int> ft_vector_assignation;
-	ft_vector_assignation = ft_vector_copy;
-	print_size(ft_vector_assignation, "ft_vector_assignation");
-	print_vector(ft_vector_assignation, "ft_vector_assignation");
+	print_title("ASSIGNATION OPERATOR", "vector");
+	ft::vector<int> vector_assignation;
+	vector_assignation = vector_copy;
+	print_size(vector_assignation, "vector_assignation");
+	print_vector(vector_assignation, "vector_assignation");
 
-	print_title("ASSIGNATION OPERATOR WITH STRING", "ft::vector");
+	print_title("ASSIGNATION OPERATOR WITH STRING", "vector");
 	std::vector<std::string> o1(5, "cy");
 	std::vector<std::string> o3 = o1;
 	std::vector<std::string>::iterator oit = o3.begin();
@@ -75,35 +75,33 @@ void contructors()
 
 void iterators()
 {
-	print_title("ITERATOR TEST", "ft::vector");
+	print_title("ITERATOR TEST", "vector");
 
-	ft::vector<char> ft_vector;
+	ft::vector<char> vector;
 
 	for (int i = 65; i < 80; i++)
-		ft_vector.push_back(i);
-	//ft::vector<char>::iterator it = ft_vector.begin();
-	
+		vector.push_back(i);
 
-	std::cout << "ft_vector (ITERATOR): ";
-	for (ft::vector<char>::iterator it = ft_vector.begin(); it != ft_vector.end(); it++)
+	std::cout << "vector (ITERATOR): ";
+	for (ft::vector<char>::iterator it = vector.begin(); it != vector.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 	std::cout << "\n" << std::endl;
 	
-	std::cout << "ft_vector (CONST_ITERATOR): ";
-	for (ft::vector<char>::const_iterator it = ft_vector.begin(); it != ft_vector.end(); it++)
+	std::cout << "vector (CONST_ITERATOR): ";
+	for (ft::vector<char>::const_iterator it = vector.begin(); it != vector.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 	std::cout << "\n" << std::endl;
 	
-	std::cout << "ft_vector (REVERSE_ITERATOR): ";
-	for (ft::vector<char>::reverse_iterator rit = ft_vector.rbegin(); rit != ft_vector.rend(); rit++)
+	std::cout << "vector (REVERSE_ITERATOR): ";
+	for (ft::vector<char>::reverse_iterator rit = vector.rbegin(); rit != vector.rend(); rit++)
 		std::cout << *rit << " ";
 	std::cout << "\n" << std::endl;
 	std::cout << std::endl;
 	
-	std::cout << "ft_vector (CONST_REVERSE_ITERATOR): ";
-	for (ft::vector<char>::const_reverse_iterator rit = ft_vector.rbegin(); rit != ft_vector.rend(); rit++)
+	std::cout << "vector (CONST_REVERSE_ITERATOR): ";
+	for (ft::vector<char>::const_reverse_iterator rit = vector.rbegin(); rit != vector.rend(); rit++)
 		std::cout << *rit << " ";
 	std::cout << std::endl;
 	std::cout << "\n";
@@ -114,15 +112,15 @@ void capacity()
 	print_title("ACCESSOR AND MEMBER FUNCTIONS", "size, max_size, capacity, resize, empty, reserve");
 	
 	ft::vector<int> tab(5, 10);
-	print_title("BEFORE RESIZE", "ft::vector");
+	print_title("BEFORE RESIZE", "vector");
 	std::cout << LET << "size : " << tab.size() << std::endl;
 
 	tab.resize(10, 10);
 	print_title("AFTER RESIZE", "(10)");
 	std::cout << LET << "size : " << tab.size() << std::endl;
 
-	print_title("VECTOR EMPTY()");
-	print_size(tab, "ft_vector");
+	print_title("VECTOR EMPTY()", "vector");
+	print_size(tab, "vector");
 
 	print_title("VECTOR RESERVE", "(20)");
 	tab.reserve(20);
@@ -133,19 +131,19 @@ void capacity()
 
 void	access()
 {
-	print_title("ELEMENT ACCESS" , "ft::vector");
+	print_title("ELEMENT ACCESS" , "vector");
 	ft::vector<int> tab;
 	for (int i = 65; i < 80; i++)
 		tab.push_back(i);
-	print_vector(tab, "ft_vector");
+	print_vector(tab, "vector");
 
-	print_title("VECTOR AT()" , "ft::vector");
+	print_title("VECTOR AT()" , "vector");
 	std::cout << LET << "tab at 5 : " << tab.at(5) << std::endl;
 
-	print_title("VECTOR FRONT()", "ft::vector");
+	print_title("VECTOR FRONT()", "vector");
 	std::cout << LET << "front : " << tab.front() << std::endl;
 
-	print_title("VECTOR BACK()", "ft::vector");
+	print_title("VECTOR BACK()", "vector");
 	std::cout << LET << "back : " << tab.back() << std::endl;
 
 	std::cout << std::endl;
@@ -153,83 +151,83 @@ void	access()
 
 void	modifiers()
 {
-	print_title("MODIFIERS", "ft::vector");
+	print_title("MODIFIERS", "vector");
 
 	ft::vector<int> tab(3, 2);
 	
-	print_vector(tab, "ft_vector(tab)");
+	print_vector(tab, "vector(tab)");
 	
 	print_title("VECTOR PUSH_BACK", "(5)");
 	tab.push_back(5);
-	print_vector(tab, "ft_vector(tab)");
+	print_vector(tab, "vector(tab)");
 
 	print_title("VECTOR POP_BACK()", "Remove 5");
 	tab.pop_back();
-	print_vector(tab, "ft_vector(tab)");
+	print_vector(tab, "vector(tab)");
 
 	print_title("VECTOR ASSIGN(n, val)", "assign two 3 : ");
 	tab.assign(2, 3);
-	print_vector(tab, "ft_vector(tab)");
+	print_vector(tab, "vector(tab)");
 
 	print_title("VECTOR INSERT", "(insert 1");
 	tab.insert(tab.begin(), 1);
-	print_vector(tab, "ft_vector(tab)");
+	print_vector(tab, "vector(tab)");
 
 	print_title("VECTOR ERASE(position)", "erase 1");
 	tab.erase(tab.begin());
-	print_vector(tab, "ft_vector(tab)");
+	print_vector(tab, "vector(tab)");
 
 	print_title("VECTOR CLEAR()", "All");
 	tab.clear();
-	print_size(tab, "ft_vector after clear()");
+	print_size(tab, "vector after clear()");
 
 	ft::vector<int> a(3, 10);
 	ft::vector<int> b(5, 7);
 	
-	print_title("BEFORE SWAP", "ft::vector");
+	print_title("BEFORE SWAP", "vector");
 	std::cout << LET << "a : ";
-	print_vector(a, "ft_vector(a)");
+	print_vector(a, "vector(a)");
 	std::cout  << "b : ";
-	print_vector(b, "ft_vector(b)");
-	print_title("AFTER SWAP", "ft::vector");
+	print_vector(b, "vector(b)");
+	print_title("AFTER SWAP", "vector");
 	a.swap(b);
 	std::cout << LET << "a : ";
-	print_vector(a, "ft_vector(a)");
+	print_vector(a, "vector(a)");
 	std::cout << "b : ";
-	print_vector(b, "ft_vector(b)");
+	print_vector(b, "vector(b)");
 
 	std::cout << std::endl;
 }
 
 void operators()
 {
-	print_title("OPERATIONAL OPERATOR", "ft::vector");
+	print_title("OPERATIONAL OPERATOR", "vector");
 
-	ft::vector<int> vect (3,100);
-	ft::vector<int> copy(vect);
+	ft::vector<int> vect (100);
+	ft::vector<int> copy(50);
 	
-	std::cout << "0#  == " << (vect == copy) << std::endl;
-	std::cout << "1#  != " << (vect != copy) << std::endl;
-	std::cout << "2#  <  " << (vect < copy) << std::endl;
-	std::cout << "3#  <= " << (vect <= copy) << std::endl;
-	std::cout << "4#  >  " << (vect > copy) << std::endl;
-	std::cout << "5#  >= " << (vect >= copy) << std::endl;
-	std::cout << "6#  [] " << vect[0] << std::endl;
+	std::cout << "0-> (vect == copy) |==| " << (vect == copy) << std::endl;
+	std::cout << "1-> (vect != copy) |!=| " << (vect != copy) << std::endl;
+	std::cout << "2-> (vect < copy)  |< | " << (vect < copy) << std::endl;
+	std::cout << "3-> (vect <= copy) |<=| " << (vect <= copy) << std::endl;
+	std::cout << "4-> (vect > copy)  | >| " << (vect > copy) << std::endl;
+	std::cout << "5-> (vect >= copy) |>=| " << (vect >= copy) << std::endl;
+	std::cout << "6->  vect[0] 	   |[]| " << vect[0] << std::endl;
 	
 	print_title("OPERATIONAL OPERATOR", "different operations");
-	copy.erase(copy.begin());
-	std::cout << "7#  == " << (vect == copy) << std::endl;
-	std::cout << "8#  != " << (vect != copy) << std::endl;
-	std::cout << "9#  <  " << (vect < copy) << std::endl;
-	std::cout << "10# <= " << (vect <= copy) << std::endl;
-	std::cout << "11# >  " << (vect > copy) << std::endl;
-	std::cout << "12# >= " << (vect >= copy) << std::endl;
-	std::cout << "13# [] " << vect[0] << std::endl;
+	ft::vector<int> str(50);
+	std::cout << "7-> (str == copy)  |==| " << (str == copy) << std::endl;
+	std::cout << "8-> (str != copy)  |!=| " << (str != copy) << std::endl;
+	std::cout << "9-> (str < copy)   |< | " << (str < copy) << std::endl;
+	std::cout << "10-> (str <= copy) |<=| "  << (str <= copy) << std::endl;
+	std::cout << "11-> (str > copy)  | >| " << (str > copy) << std::endl;
+	std::cout << "12-> (str >= copy) |>=| " << (str >= copy) << std::endl;
+	std::cout << "13->  str[0]	   |[]| " << str[0] << std::endl;
 }
 
 void test_vector()
 {
-	int start = clock();
+	//int start = clock();
 	
 	contructors();
 	iterators();
@@ -239,8 +237,8 @@ void test_vector()
 	operators();
 
 	std::cout << "\n";
-	int end = clock();
-	std::cout << RED "Execution time (vector): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
+	//int end = clock();
+	//std::cout << RED "Execution time (vector): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
 	std::cout << "\n";
 }
 

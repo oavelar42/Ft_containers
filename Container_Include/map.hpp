@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:39:48 by oavelar           #+#    #+#             */
-/*   Updated: 2022/02/14 21:28:34 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:37:32 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ namespace ft
 			typedef ft::pair<const key_type, mapped_type>		value_type;
 			
 		private:
-			typedef Tree< const value_type, Compare, Alloc>		const_tree;
-			typedef Tree< value_type, Compare, Alloc>			tree;
+			typedef Binary< const value_type, Compare, Alloc>		const_tree;
+			typedef Binary< value_type, Compare, Alloc>			tree;
 			typedef typename tree::Node							node;
 
 		public:

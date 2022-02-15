@@ -11,40 +11,40 @@ void print_map(std::map<char, int> map, std::string name)
 
 void print_size(std::map<char, int> map, std::string name)
 {
-	std::cout << name << " size: " << map.size() << ", max_size: " << map.max_size() << std::endl;
+	std::cout << name << " size: " << map.size() << std::endl;
 	std::cout << name << " empty() (1: true 0: false): " << map.empty() << std::endl;
 	std::cout << std::endl;
 } 
 
 void map_constructors()
 {
-	print_title("CONSTRUCTOR", "std::map");
+	print_title("CONSTRUCTOR", "map");
 	
-	std::map<char, int> std_map;
-	print_size(std_map, "std_map");
+	std::map<char, int> map;
+	print_size(map, "map");
 
-	print_title("COPY CONSTRUCTOR (copy of range)", "std::map");
+	print_title("COPY CONSTRUCTOR (copy of range)", "map");
 	
-	std::map<char, int> std_map_copy;
-	std_map_copy.insert(std::make_pair('a', 1));
-	print_size(std_map_copy, "std_map_copy");
-	print_map(std_map_copy, "std_map_copy");
+	std::map<char, int> map_copy;
+	map_copy.insert(std::make_pair('a', 1));
+	print_size(map_copy, "map_copy");
+	print_map(map_copy, "map_copy");
 
-	std_map_copy.insert(std::make_pair('c', 13));
-	print_size(std_map_copy, "std_map_copy");
-	print_map(std_map_copy, "std_map_copy");
+	map_copy.insert(std::make_pair('c', 13));
+	print_size(map_copy, "map_copy");
+	print_map(map_copy, "map_copy");
 	
-	std_map_copy.insert(std::make_pair('j', 3));
-	print_size(std_map_copy, "std_map_copy");
-	print_map(std_map_copy, "std_map_copy");
+	map_copy.insert(std::make_pair('j', 3));
+	print_size(map_copy, "map_copy");
+	print_map(map_copy, "map_copy");
 
-	print_title("FILL", "std::map");
+	print_title("FILL", "map");
 
-	std::map<char, int> fill(std_map_copy.begin(), std_map_copy.end());
+	std::map<char, int> fill(map_copy.begin(), map_copy.end());
 	print_size(fill, "fill");
 	print_map(fill, "fill");
 
-	print_title("ASSIGNATION OPERATOR", "std::map");
+	print_title("ASSIGNATION OPERATOR", "map");
 
 	std::map<char, int> oper = fill;
 	print_size(oper, "operator");
@@ -58,28 +58,27 @@ void map_iterator()
 	for (int i = 65; i < 73; i++, a++)
 		m1.insert(std::make_pair(i, a));
 
-
-	print_title("ITERATORS TESTS", "std::map");
+	print_title("ITERATORS TESTS", "map");
 	
-	std::cout << "std_map::(iterator): " << std::endl;
+	std::cout << "map::(iterator): " << std::endl;
 	for (std::map<char, int>::iterator it = m1.begin(); it != m1.end(); it++)
 	std::cout << (*it).first << " = " << (*it).second << ", ";
 	std::cout << std::endl;
 	std::cout << "\n" << std::endl;
 	
-	std::cout << "std_map::(const_iterator): " << std::endl;
+	std::cout << "map::(const_iterator): " << std::endl;
 	for (std::map<char, int>::const_iterator it = m1.begin(); it != m1.end(); it++)
 	std::cout << (*it).first << " = " << (*it).second << ", ";
 	std::cout << std::endl;
 	std::cout << "\n" << std::endl;
 	
-	std::cout << "std_map::(reverse_iterator): " << std::endl;
+	std::cout << "map::(reverse_iterator): " << std::endl;
 	for (std::map<char, int>::reverse_iterator rit = m1.rbegin(); rit != m1.rend(); rit++)
 	std::cout << (*rit).first << " = " << (*rit).second << ", ";
 	std::cout << std::endl;
 	std::cout << "\n" << std::endl;
 	
-	std::cout << "std_map::(const_reverse_iterator): " << std::endl;
+	std::cout << "map::(const_reverse_iterator): " << std::endl;
 	for (std::map<char, int>::const_reverse_iterator rit = m1.rbegin(); rit != m1.rend(); rit++)
 	std::cout << (*rit).first << " = " << (*rit).second << ", ";
 	std::cout << std::endl;
@@ -88,7 +87,7 @@ void map_iterator()
 
 void map_capacity()
 {
-	print_title("ACCESSOR AND MEMBER FUNCTIONS , size, empty", "std::map");
+	print_title("ACCESSOR AND MEMBER FUNCTIONS , size, empty", "map");
 
 	std::map<char, int> len;
 	int c = 'a';
@@ -96,15 +95,15 @@ void map_capacity()
 	{
 		len.insert(std::make_pair(c, i));
 	}
-	print_map(len, "std_map");
-	print_size(len, "std_map");
+	print_map(len, "map");
+	print_size(len, "map");
 
 	std::cout << std::endl;
 }
 
 void map_access()
 {
-	print_title("ELEMENT ACCESS", "std::map");
+	print_title("ELEMENT ACCESS", "map");
 	
 	std::map<std::string, char> src;
 	
@@ -112,7 +111,7 @@ void map_access()
 	src.insert(std::make_pair("ETH", 'b'));
 	src.insert(std::make_pair("DOGE", 'c'));
 
-	std::cout << "src: [\"BTC\"] == " << src["BTC"] << std::endl;
+	std::cout << LET << "src: [\"BTC\"] == " << src["BTC"] << std::endl;
 
 	std::cout << std::endl;
 }
@@ -122,7 +121,7 @@ void map_modifiers(int i)
 	
 	if (i == 0)
 	{
-		print_title("MAP INSERT(position, val)" , "std::map");
+		print_title("MAP INSERT(position, val)" , "map");
 		std::map<char,int> mymap;
 
 		mymap.insert ( std::pair<char,int>('a',100) );
@@ -139,7 +138,6 @@ void map_modifiers(int i)
 		std::map<char,int>::iterator it = mymap.begin();
 		mymap.insert (it, std::pair<char,int>('b',300));
 		mymap.insert (it, std::pair<char,int>('c',400));
-
 
 		std::map<char,int> anothermap;
 		anothermap.insert(mymap.begin(),mymap.find('c'));
@@ -160,7 +158,7 @@ void map_erase(int i)
 {
 	if (!i)
 	{
-		print_title("MAP ERASE(key)", "std::map");	
+		print_title("MAP ERASE(key)", "map");	
 		std::map<char,int> mymap;
 		std::map<char,int>::iterator it;
 
@@ -189,7 +187,7 @@ void map_swap(int i)
 {
 	if (!i)
 	{
-		print_title("MAP SWAP()", "std::map");
+		print_title("MAP SWAP()", "map");
 		std::map<char,int> foo,bar;
 
 		foo['x']=100;
@@ -203,12 +201,12 @@ void map_swap(int i)
 
 		foo.swap(bar);
 
-		std::cout << "foo astder swap:\n";
+		std::cout << "foo after swap:\n";
 		for (std::map<char,int>::iterator it = foo.begin(); it != foo.end(); ++it)
 			std::cout << it->first << " => " << it->second << '\n';
 		std::cout << std::endl;
 
-		std::cout << "bar astder swap:\n";
+		std::cout << "bar after swap:\n";
 		for (std::map<char,int>::iterator it = bar.begin(); it !=bar.end(); ++it)
 			std::cout << it->first << " => " << it->second << '\n';
 		std::cout << std::endl;
@@ -218,7 +216,7 @@ void map_swap(int i)
 
 void map_clear()
 {
-	print_title("MAP CLEAR", "std::map");
+	print_title("MAP CLEAR", "map");
 	std::map<int, int> tab;
 
 	tab.insert(std::make_pair(1, 5));
@@ -226,12 +224,12 @@ void map_clear()
 	tab.insert(std::make_pair(5, 66));
 	tab.insert(std::make_pair(13, 5));
 
-	std::cout << "size: " << tab.size() << std::endl;
-	std::cout << "empty() (1: true 0: false): " << tab.empty() << std::endl;
+	std::cout << LET "size: " << tab.size() << std::endl;
+	std::cout << LET "empty() (1: true 0: false): " << tab.empty() << std::endl;
 	tab.clear();
 	std::cout << std::endl;
-	std::cout << "After clear tab ..." << std::endl;
-	std::cout << "size: " << tab.size() << std::endl;
+	std::cout << LET "After clear tab ..." << std::endl;
+	std::cout << LET "size: " << tab.size() << std::endl;
 	std::cout << std::endl;
 }
 
@@ -239,7 +237,7 @@ void map_operations(int i)
 {
 	if (!i)
 	{
-		print_title("MAP COUNT(key)", "std::map");
+		print_title("MAP COUNT(key)", "map");
 		std::map<char,int> mymap;
 		char c;
 
@@ -261,24 +259,24 @@ void map_operations(int i)
 
 void map_find()
 {
-	print_title("MAP FIND", "std::map");
+	print_title("MAP FIND", "map");
 
-	std::map<char, int> std_map;
+	std::map<char, int> map;
 	int c = 'a';
 	for (int i = 1; i <= 26; i++, c++)
 	{
-		std_map.insert(std::make_pair(c, i));
+		map.insert(std::make_pair(c, i));
 	}
 
-	std::map<char, int>::iterator find_a = std_map.find('c');
-	std::map<char, int>::const_iterator find_z = std_map.find('u');
+	std::map<char, int>::iterator find_a = map.find('c');
+	std::map<char, int>::const_iterator find_z = map.find('u');
 	std::cout << "find('c'): " << (*find_a).first << " = " << (*find_a).second << '\n';
 	std::cout << "find('u'): " << (*find_z).first << " = " << (*find_z).second << '\n';
 }
 
 void map_bound(int i)
 {
-	print_title("MAP LOWER_BOUND AND UPPER_BOUND", "std::map");
+	print_title("MAP LOWER_BOUND AND UPPER_BOUND", "map");
 	if (!i)
 	{
 		std::map<char,int> mymap;
@@ -362,7 +360,7 @@ void map_operators(int i)
 
 void test_map()
 {
-	int start = clock();
+	//int start = clock();
 
 	map_constructors();
 	map_iterator();
@@ -379,6 +377,6 @@ void test_map()
 	map_operators(0);
 
 	std::cout << std::endl;
-	int end = clock();
-	std::cout << RED "Execution time (map): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
+	//int end = clock();
+	//std::cout << RED "Execution time (map): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
 }

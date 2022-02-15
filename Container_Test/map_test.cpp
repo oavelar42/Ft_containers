@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:30:17 by oavelar           #+#    #+#             */
-/*   Updated: 2022/02/14 22:01:23 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/02/15 16:57:57 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,40 +23,40 @@ void print_map(ft::map<char, int> map, std::string name)
 
 void print_size(ft::map<char, int> map, std::string name)
 {
-	std::cout << name << " size: " << map.size() << ", max_size: " << map.max_size() << std::endl;
+	std::cout << name << " size: " << map.size() << std::endl;
 	std::cout << name << " empty() (1: true 0: false): " << map.empty() << std::endl;
 	std::cout << std::endl;
 }
 
 void map_constructors()
 {
-	print_title("CONSTRUCTOR", "ft::map");
+	print_title("CONSTRUCTOR", "map");
 	
-	ft::map<char, int> ft_map;
-	print_size(ft_map, "ft_map");
+	ft::map<char, int> map;
+	print_size(map, "map");
 
-	print_title("COPY CONSTRUCTOR (copy of range)", "ft::map");
+	print_title("COPY CONSTRUCTOR (copy of range)", "map");
 	
-	ft::map<char, int> ft_map_copy;
-	ft_map_copy.insert(ft::make_pair('a', 1));
-	print_size(ft_map_copy, "ft_map_copy");
-	print_map(ft_map_copy, "ft_map_copy");
+	ft::map<char, int> map_copy;
+	map_copy.insert(ft::make_pair('a', 1));
+	print_size(map_copy, "map_copy");
+	print_map(map_copy, "map_copy");
 
-	ft_map_copy.insert(ft::make_pair('c', 13));
-	print_size(ft_map_copy, "ft_map_copy");
-	print_map(ft_map_copy, "ft_map_copy");
+	map_copy.insert(ft::make_pair('c', 13));
+	print_size(map_copy, "map_copy");
+	print_map(map_copy, "map_copy");
 	
-	ft_map_copy.insert(ft::make_pair('j', 3));
-	print_size(ft_map_copy, "ft_map_copy");
-	print_map(ft_map_copy, "ft_map_copy");
+	map_copy.insert(ft::make_pair('j', 3));
+	print_size(map_copy, "map_copy");
+	print_map(map_copy, "map_copy");
 
-	print_title("FILL", "ft::map");
+	print_title("FILL", "map");
 
-	ft::map<char, int> fill(ft_map_copy.begin(), ft_map_copy.end());
+	ft::map<char, int> fill(map_copy.begin(), map_copy.end());
 	print_size(fill, "fill");
 	print_map(fill, "fill");
 
-	print_title("ASSIGNATION OPERATOR", "ft::map");
+	print_title("ASSIGNATION OPERATOR", "map");
 
 	ft::map<char, int> oper = fill;
 	print_size(oper, "operator");
@@ -65,35 +65,32 @@ void map_constructors()
 
 void map_iterator()
 {
-	print_title("ITERATORS TESTS");
-
 	ft::map<char, int> m1;
 	int a = 1;
 	for (int i = 65; i < 73; i++, a++)
 		m1.insert(ft::make_pair(i, a));
 
-
-	print_title("ITERATORS TESTS", "ft::map");
+	print_title("ITERATORS TESTS", "map");
 	
-	std::cout << "ft_map::(iterator): " << std::endl;
+	std::cout << "map::(iterator): " << std::endl;
 	for (ft::map<char, int>::iterator it = m1.begin(); it != m1.end(); it++)
 	std::cout << (*it).first << " = " << (*it).second << ", ";
 	std::cout << std::endl;
 	std::cout << "\n" << std::endl;
 	
-	std::cout << "ft_map::(const_iterator): " << std::endl;
+	std::cout << "map::(const_iterator): " << std::endl;
 	for (ft::map<char, int>::const_iterator it = m1.begin(); it != m1.end(); it++)
 	std::cout << (*it).first << " = " << (*it).second << ", ";
 	std::cout << std::endl;
 	std::cout << "\n" << std::endl;
 	
-	std::cout << "ft_map::(reverse_iterator): " << std::endl;
+	std::cout << "map::(reverse_iterator): " << std::endl;
 	for (ft::map<char, int>::reverse_iterator rit = m1.rbegin(); rit != m1.rend(); rit++)
 	std::cout << (*rit).first << " = " << (*rit).second << ", ";
 	std::cout << std::endl;
 	std::cout << "\n" << std::endl;
 	
-	std::cout << "ft_map::(const_reverse_iterator): " << std::endl;
+	std::cout << "map::(const_reverse_iterator): " << std::endl;
 	for (ft::map<char, int>::const_reverse_iterator rit = m1.rbegin(); rit != m1.rend(); rit++)
 	std::cout << (*rit).first << " = " << (*rit).second << ", ";
 	std::cout << std::endl;
@@ -102,7 +99,7 @@ void map_iterator()
 
 void map_capacity()
 {
-	print_title("ACCESSOR AND MEMBER FUNCTIONS , size, empty", "ft::map");
+	print_title("ACCESSOR AND MEMBER FUNCTIONS , size, empty", "map");
 
 	ft::map<char, int> len;
 	int c = 'a';
@@ -110,15 +107,15 @@ void map_capacity()
 	{
 		len.insert(ft::make_pair(c, i));
 	}
-	print_map(len, "ft_map");
-	print_size(len, "ft_map");
+	print_map(len, "map");
+	print_size(len, "map");
 
 	std::cout << std::endl;
 }
 
 void map_access()
 {
-	print_title("ELEMENT ACCESS");
+	print_title("ELEMENT ACCESS", "map");
 	
 	ft::map<std::string, char> src;
 	
@@ -136,8 +133,7 @@ void map_modifiers(int i)
 	
 	if (i == 0)
 	{
-		print_title("MAP INSERT(position, val)" , "ft::map");
-		std::cout << LET;
+		print_title("MAP INSERT(position, val)" , "map");
 		ft::map<char,int> mymap;
 
 		mymap.insert ( ft::pair<char,int>('a',100) );
@@ -154,7 +150,6 @@ void map_modifiers(int i)
 		ft::map<char,int>::iterator it = mymap.begin();
 		mymap.insert (it, ft::pair<char,int>('b',300));
 		mymap.insert (it, ft::pair<char,int>('c',400));
-
 
 		ft::map<char,int> anothermap;
 		anothermap.insert(mymap.begin(),mymap.find('c')); //find operation used
@@ -175,7 +170,7 @@ void map_erase(int i)
 {
 	if (!i)
 	{
-		print_title("MAP ERASE(key)", "ft::map");
+		print_title("MAP ERASE(key)", "map");
 		ft::map<char,int> mymap;
 		ft::map<char,int>::iterator it;
 
@@ -204,7 +199,7 @@ void map_swap(int i)
 {
 	if (!i)
 	{
-		print_title("MAP SWAP()", "ft::map");
+		print_title("MAP SWAP()", "map");
 		ft::map<char,int> foo,bar;
 
 		foo['x']=100;
@@ -233,7 +228,7 @@ void map_swap(int i)
 
 void map_clear()
 {
-	print_title("MAP CLEAR", "ft::map");
+	print_title("MAP CLEAR", "map");
 	ft::map<int, int> tab;
 
 	tab.insert(ft::make_pair(1, 5));
@@ -254,7 +249,7 @@ void map_operations(int i)
 {
 	if (!i)
 	{
-		print_title("MAP COUNT(key)");
+		print_title("MAP COUNT(key)", "map");
 		ft::map<char,int> mymap;
 		char c;
 
@@ -276,24 +271,24 @@ void map_operations(int i)
 
 void map_find()
 {
-	print_title("MAP FIND", "ft::map");
+	print_title("MAP FIND", "map");
 
-	ft::map<char, int> ft_map;
+	ft::map<char, int> map;
 	int c = 'a';
 	for (int i = 1; i <= 26; i++, c++)
 	{
-		ft_map.insert(ft::make_pair(c, i));
+		map.insert(ft::make_pair(c, i));
 	}
 
-	ft::map<char, int>::iterator find_a = ft_map.find('c');
-	ft::map<char, int>::const_iterator find_z = ft_map.find('u');
+	ft::map<char, int>::iterator find_a = map.find('c');
+	ft::map<char, int>::const_iterator find_z = map.find('u');
 	std::cout << "find('c'): " << (*find_a).first << " = " << (*find_a).second << '\n';
 	std::cout << "find('u'): " << (*find_z).first << " = " << (*find_z).second << '\n';
 }
 
 void map_bound(int i)
 {
-	print_title("MAP LOWER_BOUND AND UPPER_BOUND", "ft::map");
+	print_title("MAP LOWER_BOUND AND UPPER_BOUND", "map");
 	if (!i)
 	{
 		ft::map<char,int> mymap;
@@ -377,7 +372,7 @@ void map_operators(int i)
 
 void test_map()
 {
-	int start = clock();
+	//int start = clock();
 
 	map_constructors();
 	map_iterator();
@@ -394,8 +389,8 @@ void test_map()
 	map_operators(0);
 
 	std::cout << std::endl;
-	int end = clock();
-	std::cout << RED "Execution time (map): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
+	//int end = clock();
+	//std::cout << RED "Execution time (map): " OFF << ((float)end - start)/CLOCKS_PER_SEC << " seconds" << std::endl;
 }
 
 

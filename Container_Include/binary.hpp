@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 13:54:12 by oavelar           #+#    #+#             */
-/*   Updated: 2022/02/14 21:47:04 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:41:22 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ namespace ft
     template <	class T,
 				class Compare = ft::less<typename T::first_type>,
 				class Alloc = std::allocator<T> >
-    class Tree
+    class Binary
     {		
 		public:
 			
@@ -78,7 +78,7 @@ namespace ft
 			/*  Classe de função para comparar elementos  */
 			class value_compare
 			{
-					friend class Tree;
+					friend class Binary;
 				protected:
 					Compare comp;
 					value_compare (key_compare c) : comp(c) {}
@@ -98,7 +98,7 @@ namespace ft
 			/*** constructors ------------------------------------------------------ ***/
 
 			/* Default */ 
-			Tree(const key_compare& comp = key_compare(),
+			Binary(const key_compare& comp = key_compare(),
 			const allocator_type& alloc = allocator_type()) :
 				_comp(comp), _allocValue(alloc) {
 					this->_root = 0;
@@ -107,9 +107,9 @@ namespace ft
 			}
 			
 			/* Copy */
-			Tree(const Tree& x) { *this = x; }
+			Binary(const Binary& x) { *this = x; }
 			
-			Tree(const Node& node, const key_compare& comp = key_compare(),
+			Binary(const Node& node, const key_compare& comp = key_compare(),
 			const allocator_type& alloc = allocator_type()) :
 				_comp(comp), _allocValue(alloc) {
 					this->_root = &node;
@@ -119,14 +119,14 @@ namespace ft
 			
 
 			/* Destructor all */
-			~Tree() {
+			~Binary() {
 				this->clear();
 				this->_allocNode.deallocate(this->_end_node, 1);
 			}
 
 			 /***************************************************************************/
 			/*** operator= --------------------------------------------------------- ***/
-			Tree&			operator=(const Tree& x)
+			Binary&			operator=(const Binary& x)
 			{		
 				if(this == &x)
 					return *this;
@@ -185,7 +185,7 @@ namespace ft
 				this->_end_node->left = 0;
 			}
 
-			void			swap(Tree& x) {
+			void			swap(Binary& x) {
 				Node* tmp = this->_root;
 				this->_root = x._root;
 				x._root = tmp;
