@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 13:54:12 by oavelar           #+#    #+#             */
-/*   Updated: 2022/02/15 14:41:22 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/02/25 17:52:25 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ namespace ft
 			   //      Modifiers     //
 			  ////////////////////////
 			
-			// empty node which represents the end of the tree (after the biggest element)
+			/* nó vazio que representa a extremidade da árvore (depois do maior elemento) */
 			void			set_end_node() {
 				if (this->_root)
 					this->_end_node->parent = this->_root->max();
@@ -241,7 +241,7 @@ namespace ft
 			 /***************************************************************************/
 			/*** rotation check ---------------------------------------------------- ***/
 
-			/* X rotation for top left side */
+			/* X rodar para o top do lado esquerdo  */
 			Node*	leftRotate(Node* x)
 			{
 				Node *top = x->right;
@@ -257,7 +257,7 @@ namespace ft
 				return top;
 			}
 
-			/* X rotation for top right side */
+			/* X rodar para o top do lado direito  */
 			Node*	rightRotate(Node* y)
 			{
 				Node* top = y->left;
@@ -273,8 +273,8 @@ namespace ft
 				return top;
 			}
 			
-			/* looking for lost node */
-			int	balanceFactor(Node* node) const {
+			/* vericaçao dos lados  */
+			int	lastcheck(Node* node) const {
 				if (!node)
 					return 0;
 				return heightNode(node->right) - heightNode(node->left);
@@ -282,24 +282,24 @@ namespace ft
 			
 			Node*			balance_after_insert(Node* node, const key_type key)
 			{
-				int bf = balanceFactor(node);
+				int bf = lastcheck(node);
 				
-				/* Left Left Case */
+				/* segundo caso da esquerda */
 				if (bf < -1 && this->_comp(key, node->left->value.first))
 					return rightRotate(node);
 
-				/* Right Right Case */
+				/* segundo caso da direita  */
 				if (bf > 1 && this->_comp(node->right->value.first, key))
 					return leftRotate(node);
 				
-				/* Left Right Case */
+				/* primeiro lado esquerdo , e depois lado direito */
 				if (bf < -1 && this->_comp(node->left->value.first, key))
 				{
 					node->left = leftRotate(node->left);
 					return rightRotate(node);
 				}
 
-				/* Right Left Case */
+				/* primeiro lado direito , e depois lado esquerdo */
 				if (bf > 1 && this->_comp(key, node->right->value.first))
 				{
 					node->right = rightRotate(node->right);
@@ -314,21 +314,21 @@ namespace ft
 				if (!node)
 					return node;
 					
-				int bf = balanceFactor(node);
-				/* Left Left Case */
-				if (bf < -1 && balanceFactor(node->left) <= 0)
+				int bf = lastcheck(node);
+				/* segundo caso a esquerda*/
+				if (bf < -1 && lastcheck(node->left) <= 0)
 					return rightRotate(node);
-				/* Right Right Case */
-				if (bf > 1 && balanceFactor(node->right) >= 0)
+				/* segundo caso a direita */
+				if (bf > 1 && lastcheck(node->right) >= 0)
 					return leftRotate(node);
-				/* Left Right Case */
-				if (bf < -1 && balanceFactor(node->left) > 0)
+				/* primeiro lado esquerdo , e depois lado direito  */
+				if (bf < -1 && lastcheck(node->left) > 0)
 				{
 					node->left = leftRotate(node->left);
 					return rightRotate(node);
 				}
-				/* Right Left Case */
-				if (bf > 1 && balanceFactor(node->right) < 0)
+				/* primeiro lado direito , e depois lado esquerdo  */
+				if (bf > 1 && lastcheck(node->right) < 0)
 				{
 					node->right = rightRotate(node->right);
 					return leftRotate(node);
@@ -429,7 +429,8 @@ namespace ft
 					}
 					else
 					{
-						Node *tmp = node->right->min();   	// find the greatest
+						// encontrar o maior
+						Node *tmp = node->right->min();   	
 
 						if (tmp != node->right)
 						{

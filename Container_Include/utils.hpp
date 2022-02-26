@@ -6,12 +6,12 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:19:19 by oavelar           #+#    #+#             */
-/*   Updated: 2022/02/14 18:28:03 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/02/25 17:58:09 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PAIR_HPP
-# define PAIR_HPP
+#ifndef UTILS_HPP
+# define UTILS_HPP
 
 namespace ft
 {
@@ -59,72 +59,44 @@ namespace ft
 	  /***************************************************************************/
 	 /****** ITERATOR_TRAITS ------------------------------------------------ ***/
 	
-	template <class Iterator>
-	class iterator_traits
+    template <class Iterator> 
+    struct iterator_traits 
 	{
-		public:
-			typedef typename Iterator::difference_type		difference_type;
-			typedef typename Iterator::value_type			value_type;
-			typedef typename Iterator::pointer				pointer;
-			typedef typename Iterator::reference			reference;
-			typedef typename Iterator::iterator_category	iterator_category;
-	};
+    	public:
+			typedef typename    Iterator::difference_type       difference_type;   
+			typedef typename    Iterator::value_type            value_type;         
+			typedef typename    Iterator::pointer               pointer;             
+			typedef typename    Iterator::reference             reference;         
+			typedef typename    Iterator::iterator_category     iterator_category; 
+    };
+
+    /*  Specialized for pointers (T*) */
+    template <class T> 
+    struct iterator_traits<T*> 
+	{
+    	public:
+			typedef ptrdiff_t   difference_type;  
+			typedef T   value_type;       
+			typedef T*  pointer;          
+			typedef T&  reference;        
+			typedef std::random_access_iterator_tag  iterator_category;
+    };
+    /* pointers to const (const T*) */
+    template <class T>
+    struct iterator_traits<const T*>
+	{
+    	public:
+			typedef ptrdiff_t   difference_type;  
+			typedef T   value_type;       
+			typedef T   const*  pointer;          
+			typedef T   const&  reference;        
+			typedef std::random_access_iterator_tag  iterator_category;
+
+    };
 
 
 	/***************************************************************************/
    /****** UTILS ---------------------------------------------------------- ***/
-
-
-	/*  struct enable_if : */
-		/*  pode ser usado como um argumento de função adicional  */ 
-	   /*   pode ser usado como um tipo de retorno               */ 
-	  /*    pode ser usado como um modelo de classe 
-							ou parâmetro de modelo de função   */
- 
-	template <bool Cond>
-	struct enable_if {};
-
-	template <>
-	struct enable_if<true> { typedef int type; };
-
-	  /***************************************************************************/
-	 /****** IS_INTEGRAL ---------------------------------------------------- ***/
-
-	// template <class T>
-	// struct is_node { static const bool value = false; };
-	// template <>
-	// struct is_node<Node> { static const bool value = true; };
-
-	
-	template <class T>
-	struct is_integral { static const bool value = false; };
-	
-	template <>
-	struct is_integral<bool> { static const bool value = true; };
-	template <>
-	struct is_integral<char> { static const bool value = true; };
-	template <>
-	struct is_integral<wchar_t> { static const bool value = true; };
-	template <>
-	struct is_integral<signed char> { static const bool value = true; };
-	template <>
-	struct is_integral<short int> { static const bool value = true; };
-	template <>
-	struct is_integral<int> { static const bool value = true; };
-	template <>
-	struct is_integral<long int> { static const bool value = true; };
-	template <>
-	struct is_integral<long long int> { static const bool value = true; };
-	template <>
-	struct is_integral<unsigned char> { static const bool value = true; };
-	template <>
-	struct is_integral<unsigned short int> { static const bool value = true; };
-	template <>
-	struct is_integral<unsigned int> { static const bool value = true; };
-	template <>
-	struct is_integral<unsigned long int> { static const bool value = true; };
-	template <>
-	struct is_integral<unsigned long long int> { static const bool value = true; };
 
 
 	 /*  lexicographical_compare é :  */ 
@@ -193,6 +165,5 @@ namespace ft
 		return (pair<T1,T2>(x,y));
 	}
 }
-
 
 #endif

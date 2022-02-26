@@ -6,7 +6,7 @@
 /*   By: oavelar <oavelar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:39:48 by oavelar           #+#    #+#             */
-/*   Updated: 2022/02/15 14:37:32 by oavelar          ###   ########.fr       */
+/*   Updated: 2022/02/23 22:24:36 by oavelar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ namespace ft
 			typedef	typename tree::pointer						pointer;
 			typedef	typename tree::const_pointer				const_pointer;
 			typedef	typename tree::size_type					size_type;
-			typedef typename tree::value_compare				value_compare;
 			
 			typedef	ft::map_iterator<bidirectional_iterator_tag,
 			const_tree, tree>												const_iterator;
@@ -59,6 +58,23 @@ namespace ft
 			typedef	ft::reverse_iterator<const_iterator>					const_reverse_iterator;
 			typedef	ft::reverse_iterator<iterator>							reverse_iterator;	
 			typedef typename iterator_traits<iterator>::difference_type		difference_type;
+
+			class value_compare : std::binary_function<value_type, value_type, bool>
+			{
+				friend class map<key_type, mapped_type, key_compare, Alloc>;
+			protected:
+				Compare comp;
+				value_compare (Compare c) : comp(c) {}
+			public:
+				typedef bool result_type;
+				typedef value_type first_argument_type;
+				typedef value_type second_argument_type;
+				bool operator() (const value_type& x, const value_type& y) const
+				{
+					return comp(x.first, y.first);
+				}
+		};
+
 			
 			  /****************************/
 			 /*     Member functions     */
@@ -148,8 +164,6 @@ namespace ft
 			
 			iterator				insert(iterator position, const value_type& val) 
 			{
-				// optimizes its insertion time if position points to the element
-				// that will precede the inserted element.
 				iterator prec(position);
 				if (value_comp()(*prec, val) && value_comp()(val, *++position))
 				{
@@ -192,9 +206,9 @@ namespace ft
 			 //     Observers      //
 			////////////////////////
 			
-			key_compare				key_comp() const { return this->_tree.key_comp(); }
+			key_compare				key_comp() const { return (key_compare()); }
 			
-			value_compare			value_comp() const { return this->_tree.value_comp(); }
+			value_compare			value_comp() const { return (value_compare(key_compare())); }
 
 			  ////////////////////////
 			 //     Operation      //
@@ -261,7 +275,7 @@ namespace ft
 						return pair<iterator, iterator>(it++, it);
 				return pair<iterator, iterator>(this->lower_bound(k), this->lower_bound(k));
 			}
-			
+
 		private:
 			tree					_tree;
 	};
